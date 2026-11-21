@@ -36,7 +36,7 @@ h1{font-size:30px;line-height:1.15;margin:0;font-weight:700}
 h2{font-size:26px;line-height:1.2;margin:0;font-weight:700}
 .lead{font-size:19px;line-height:1.45;color:var(--soft);margin:0}
 p{margin:0}
-.big{width:100%;border:none;background:var(--or);color:#fff;font-size:21px;font-weight:700;padding:17px;border-radius:18px;cursor:pointer;animation:pulse 1.8s infinite}
+.big{width:100%;border:none;background:var(--or);color:#fff;font-size:20px;font-weight:700;padding:14px;border-radius:18px;cursor:pointer;animation:pulse 1.8s infinite}
 .big.ghost{background:var(--mint);color:var(--deep);animation:none}
 a.big{display:block;text-align:center;text-decoration:none}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(216,90,48,.5)}60%{box-shadow:0 0 0 14px rgba(216,90,48,0)}}
@@ -106,7 +106,7 @@ a.big{display:block;text-align:center;text-decoration:none}
 .chips{display:flex;flex-direction:column;gap:9px}
 .chip{border:2px solid var(--or);background:#fff;border-radius:16px;padding:12px 14px;font-size:18px;text-align:left;cursor:pointer;line-height:1.3;animation:pop .35s}
 .chip:active{background:#FFF1EA}
-.copybox{background:#F6F2EA;border-radius:16px;padding:14px;font-size:19px;line-height:1.4;border:2px dashed var(--or2)}
+.copybox{background:#F6F2EA;border-radius:16px;padding:12px;font-size:17px;line-height:1.4;border:2px dashed var(--or2)}
 .mini{display:flex;gap:10px;align-items:flex-start;font-size:17px;line-height:1.35}
 .mini i{flex:none;width:30px;height:30px;border-radius:50%;background:var(--or);color:#fff;font-style:normal;font-weight:700;display:flex;align-items:center;justify-content:center}
 .hint{font-size:17px;color:var(--or);font-weight:700;text-align:right;animation:bob 1.4s infinite}
@@ -123,12 +123,87 @@ a.big{display:block;text-align:center;text-decoration:none}
 @keyframes fall{to{transform:translateY(105vh) rotate(720deg)}}
 #toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:30px;font-size:17px;z-index:25;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
 #toast.on{opacity:1}
+
+.tb{border:2px solid var(--line);background:#fff;border-radius:14px;min-width:46px;height:40px;font-size:18px;font-weight:700;cursor:pointer}
+.tb.on{border-color:var(--or);background:#FFF1EA;color:var(--or)}
+body.lg .lead{font-size:21px!important}body.lg .b,body.lg .chip,body.lg .st1,body.lg .note,body.lg .mini,body.lg .opt,body.lg .cube,body.lg .copybox,body.lg .sms,body.lg .flip{font-size:20px!important}
+body.lg h2{font-size:28px}body.lg .c{overflow-y:auto}
+.tapme{animation:pulse 1.6s infinite}
+.ibar{display:flex;gap:8px;align-items:center;border:2px solid var(--line);border-radius:30px;padding:6px 6px 6px 14px;background:#fff}
+.ifield{flex:1;font-size:17px;color:#9B998F;min-height:24px}
+.ifield.typing{color:var(--ink)}
+.ibtn{width:52px;height:52px;border-radius:50%;border:2px solid var(--or);background:#fff;font-size:24px;cursor:pointer;flex:none}
+.ibtn.dark{background:var(--ink);color:#fff;border-color:var(--ink);opacity:.5}
+.ibtn.rec{background:var(--or);color:#fff}
+.wave{display:inline-flex;gap:4px;align-items:center;height:24px}.wave i{width:5px;background:var(--or);border-radius:3px;animation:wv .6s infinite alternate}
+.wave i:nth-child(2){animation-delay:.15s}.wave i:nth-child(3){animation-delay:.3s}.wave i:nth-child(4){animation-delay:.45s}.wave i:nth-child(5){animation-delay:.2s}
+@keyframes wv{from{height:5px}to{height:24px}}
+.voice{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:0}
+.vcirc{flex:none;width:150px;height:150px;border-radius:50%;border:none;background:var(--ink);color:#fff;font-size:54px;cursor:pointer}
+.vcirc.live{background:radial-gradient(circle at 40% 35%,#9FE1CB,#1D9E75);animation:breathe 1.8s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.pics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pic{border:3px solid var(--or);background:#fff;border-radius:18px;padding:8px 4px;font-size:17px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
+.pic svg{width:62px;height:62px}
+.pic.on{border-color:var(--teal);background:var(--mint)}
+.blk{animation:bl 1s steps(2) infinite}@keyframes bl{50%{opacity:0}}
+.flash{position:fixed;inset:0;background:#fff;z-index:40;animation:fl .5s forwards;pointer-events:none}@keyframes fl{from{opacity:.95}to{opacity:0}}
+.photo{width:120px;height:90px;border-radius:12px;background:#F1EFE8;display:flex;align-items:center;justify-content:center}
+.photo svg{width:70px;height:70px}
+.doc{background:#FFFDF8;border:2px solid var(--line);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:6px;box-shadow:3px 4px 0 #ECE6D8;transform:rotate(-1deg)}
+.dl{border:none;background:none;text-align:left;font-size:18px;padding:8px 10px;border-radius:8px;cursor:pointer;position:relative;font-family:inherit}
+.dl:hover{background:#F6F2EA}
+.dl.cov{color:transparent;background:var(--ink)}.dl.cov::after{content:'🙈 закрито';position:absolute;left:12px;top:8px;color:#fff;font-size:16px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;border:2px solid var(--or);background:#fff;border-radius:16px;padding:13px;font-size:18px;line-height:1.35;cursor:pointer}
+.opt .vl{flex:none;width:32px;height:32px;border-radius:50%;background:var(--amb2);color:#633806;font-weight:700;display:flex;align-items:center;justify-content:center}
+.opt.good{border-color:var(--teal);background:var(--mint)}.opt.bad{border-color:#E24B4A;background:#FCEBEB;animation:shake .4s}
+.slots{display:flex;gap:8px}.slot{flex:1;min-height:44px;border:2px dashed var(--or2);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#B4B2A9;font-weight:700;font-size:15px;padding:4px;text-align:center;line-height:1.2}
+.slot.full{border-style:solid;border-color:var(--teal);background:var(--mint);color:var(--deep);animation:pop .3s}
+.cubes{display:flex;flex-direction:column;gap:8px}
+.cube{border:none;background:var(--amb);color:#412402;font-weight:700;font-size:16px;border-radius:12px;padding:9px;cursor:pointer;box-shadow:0 4px 0 #BA7517;animation:bob 2.4s ease-in-out infinite}
+.cube:nth-child(2){animation-delay:.4s}.cube:nth-child(3){animation-delay:.8s}
+.cube.used{visibility:hidden}.cube.no{animation:shake .4s}
+.tools{display:flex;gap:6px;margin-top:8px}.tl{width:40px;height:36px;border-radius:10px;border:2px solid var(--line);background:#fff;font-size:18px;display:inline-flex;align-items:center;justify-content:center}
+button.tl{border-color:var(--or);cursor:pointer}
+.msgr{border:2px solid #CECBF6;border-radius:18px;overflow:hidden;flex:1;min-height:70px;display:flex;flex-direction:column}
+.mh{background:#EEEDFE;color:#3C3489;font-weight:700;padding:8px 12px;font-size:16px}
+.mbody{flex:1;padding:8px;display:flex;flex-direction:column;justify-content:flex-end}
+.mb{align-self:flex-end;background:#7360F2;color:#fff;border-radius:16px 16px 4px 16px;padding:9px 12px;font-size:16px;max-width:88%;animation:fly .6s ease}
+@keyframes fly{from{opacity:0;transform:translate(-40px,30px) scale(.7)}to{opacity:1;transform:none}}
+.skip{border:none;background:none;color:var(--soft);font-size:17px;text-decoration:underline;cursor:pointer;align-self:center}
+.sms{background:#F6F2EA;border-radius:18px;padding:14px;font-size:18px;line-height:1.45;min-height:120px;animation:pop .35s}
+.sms small{display:block;color:var(--soft);font-size:14px;margin-bottom:6px}
+.tile2{border:none;border-radius:18px;padding:16px 6px;font-size:21px;font-weight:700;cursor:pointer}
+.tile2.red{background:#FCEBEB;color:#A32D2D;border:3px solid #F09595}.tile2.green{background:var(--mint);color:var(--deep);border:3px solid #5DCAA5}
+.flips{display:flex;flex-direction:column;gap:10px}
+.flip{border:none;border-radius:18px;padding:0;height:80px;cursor:pointer;perspective:600px;background:none;position:relative}
+.flip span{position:absolute;inset:0;border-radius:18px;display:flex;align-items:center;justify-content:center;padding:10px 14px;font-size:19px;backface-visibility:hidden;transition:transform .6s;line-height:1.3}
+.fr{background:var(--or);color:#fff;font-weight:700;animation:pulse 2s infinite}
+.bk{background:var(--mint);color:var(--deep);transform:rotateY(180deg)}
+.flip.on .fr{transform:rotateY(180deg)}.flip.on .bk{transform:rotateY(360deg)}
+.wheelw{position:relative;width:200px;height:200px;margin:0 auto;flex:none}
+.ptr{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:26px;color:var(--or);z-index:2}
+.wheel{width:100%;height:100%;border-radius:50%;border:5px solid var(--ink);transition:transform 3.2s cubic-bezier(.17,.67,.2,1);position:relative;background:conic-gradient(#F5C4B3 0 45deg,#9FE1CB 0 90deg,#FAC775 0 135deg,#CECBF6 0 180deg,#F5C4B3 0 225deg,#9FE1CB 0 270deg,#FAC775 0 315deg,#CECBF6 0 360deg)}
+.wheel b{position:absolute;left:50%;top:50%;font-size:28px;margin:-17px 0 0 -14px}
+.idea{background:#fff;border:2px solid var(--teal);border-radius:16px;padding:12px;animation:pop .4s}
+.idea p{font-size:18px;line-height:1.4;margin-bottom:10px}
+.irow{display:flex;gap:8px}.irow button{flex:1;border-radius:12px;border:2px solid var(--or);background:#fff;font-size:16px;font-weight:700;padding:10px 4px;cursor:pointer}
+.irow .star.on{background:var(--amb);border-color:var(--amb)}
+.fav{border:2px solid var(--amb);background:var(--amb2);border-radius:14px;padding:11px 13px;font-size:17px;line-height:1.35;text-align:left;cursor:pointer}
+.cheat{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cheat div{background:#F6F2EA;border-radius:16px;padding:8px 10px;font-size:16px;line-height:1.3;animation:pop .4s both}
+.cheat div:nth-child(2){animation-delay:.15s}.cheat div:nth-child(3){animation-delay:.3s}.cheat div:nth-child(4){animation-delay:.45s}
+.cheat span{display:block;font-size:24px;animation:bob 2.6s infinite}
+
 @media (max-height:700px){.hero{height:112px}.orb{width:44px;height:44px;font-size:22px}h1{font-size:27px}.ph{height:220px;width:124px}}
+
+.c{overflow-y:auto;scrollbar-width:none}.c::-webkit-scrollbar{display:none}
+@media (max-height:650px){.c{gap:8px;padding:14px 14px 12px}h1{font-size:25px}h2{font-size:22px}.lead{font-size:16px!important}.b,.chip,.opt,.note,.cube,.copybox,.sms,.mini,.st1,.dl,.fav{font-size:15px!important}.big{padding:11px;font-size:18px}.pill{font-size:13px}.tile{padding:10px 6px}.tile span{font-size:34px}.pic svg{width:44px;height:44px}.wheelw{width:150px;height:150px}.wheel b{font-size:22px}.flip{height:60px}.flip span{font-size:16px}.hero{height:96px}.ph{height:200px;width:116px}.vcirc{width:110px;height:110px}.cheat span{font-size:20px}.tile2{padding:11px 6px;font-size:18px}.slot{min-height:36px;font-size:13px}}
 @media (prefers-reduced-motion:reduce){*{animation-duration:0s!important;animation-iteration-count:1!important}}
 </style>
 </head>
 <body>
-<div id="top"><span id="stars">⭐ 0 / 10</span><div id="pbar"><i></i></div></div>
+<div id="top"><span id="stars">⭐ 0 / 10</span><div id="pbar"><i></i></div><button class="tb" id="say" aria-label="Прочитати вголос">🔊</button><button class="tb" id="aa" aria-label="Більші літери">A+</button></div>
 <div id="track">
 
 <!-- 0 обкладинка -->
@@ -262,12 +337,173 @@ a.big{display:block;text-align:center;text-decoration:none}
   <button class="big ghost" id="done2" style="margin-top:auto">✅ Готово, вийшло!</button>
 </div></section>
 
-<!-- 8 скоро -->
-<section class="s"><div class="c" style="text-align:center;justify-content:center">
-  <div style="font-size:70px;animation:wiggle 2s infinite">🚧</div>
-  <h2>Місії 3–10 уже в дорозі</h2>
-  <p class="lead">Голос, фото, шахраї, ідеї на щодня і шпаргалка. Скоро тут.</p>
-  <button class="big ghost" data-go="map">🗺 Повернутися на карту</button>
+<!-- М3 голос -->
+<section class="s" data-id="m3"><div class="c">
+  <span class="pill or">Місія 3 з 10 · 🎤</span>
+  <h2>Не хочете писати? Скажіть!</h2>
+  <p class="lead" style="font-size:18px">Натисніть мікрофон і «скажіть» питання 👇</p>
+  <div class="chat" id="c4"></div>
+  <div class="ibar"><div class="ifield" id="vf">Запитайте що завгодно</div><button class="ibtn tapme" id="mic" aria-label="Мікрофон">🎙</button><button class="ibtn dark" aria-hidden="true" tabindex="-1">〰</button></div>
+  <p class="hint" id="h4" style="display:none">А ще можна поговорити →</p>
+</div></section>
+
+<section class="s"><div class="c">
+  <span class="pill or">Місія 3 з 10 · 〰</span>
+  <h2>Поговоріть, як по телефону</h2>
+  <p class="lead" style="font-size:18px">Кнопка з хвилькою вмикає розмову. Помічник відповідає вголос.</p>
+  <div class="voice"><button id="vbig" class="vcirc tapme" aria-label="Почати розмову">〰</button><p id="vcap" style="font-size:19px;font-weight:700;text-align:center">Натисніть на кружечок</p></div>
+  <p class="note tip">У безкоштовній версії голосових розмов на день менше, ніж у платній. Закінчились — пишіть або диктуйте мікрофоном.</p>
+  <button class="big ghost" data-win="2">✅ Зрозуміло, спробую голосом</button>
+</div></section>
+
+<!-- М4 фото -->
+<section class="s" data-id="m4"><div class="c">
+  <span class="pill or">Місія 4 з 10 · 📷</span>
+  <h2>Сфотографуйте — і спитайте</h2>
+  <p class="lead" style="font-size:18px">Потренуйтеся: оберіть, що «сфотографувати» 👇</p>
+  <div class="pics" id="pics">
+    <button class="pic" data-p="0"><svg viewBox="0 0 80 80"><rect x="16" y="6" width="48" height="68" rx="6" fill="#fff" stroke="#2C2C2A" stroke-width="3"/><rect x="24" y="16" width="32" height="18" rx="3" fill="#2C2C2A"/><text x="40" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#F09595" class="blk">E01</text><circle cx="32" cy="50" r="5" fill="#F5C4B3" stroke="#2C2C2A" stroke-width="2"/><circle cx="48" cy="50" r="5" fill="#F5C4B3" stroke="#2C2C2A" stroke-width="2"/></svg>Котел</button>
+    <button class="pic" data-p="1"><svg viewBox="0 0 80 80"><path d="M20 6h40v68l-5-4-5 4-5-4-5 4-5-4-5 4-5-4-5 4z" fill="#fff" stroke="#2C2C2A" stroke-width="3"/><line x1="27" y1="20" x2="53" y2="20" stroke="#B4B2A9" stroke-width="3"/><line x1="27" y1="30" x2="53" y2="30" stroke="#B4B2A9" stroke-width="3"/><text x="27" y="48" font-size="10" font-weight="700" fill="#D85A30">ПДВ</text><line x1="27" y1="58" x2="53" y2="58" stroke="#2C2C2A" stroke-width="3"/></svg>Чек</button>
+    <button class="pic" data-p="2"><svg viewBox="0 0 80 80"><rect x="26" y="4" width="28" height="72" rx="12" fill="#444441" stroke="#2C2C2A" stroke-width="3"/><circle cx="40" cy="16" r="5" fill="#E24B4A"/><circle cx="34" cy="32" r="4" fill="#D3D1C7"/><circle cx="46" cy="32" r="4" fill="#D3D1C7"/><circle cx="34" cy="44" r="4" fill="#D3D1C7"/><circle cx="46" cy="44" r="4" fill="#D3D1C7"/><rect x="33" y="54" width="14" height="14" rx="3" fill="#EF9F27"/></svg>Пульт</button>
+  </div>
+  <div class="chat" id="c5"></div>
+  <p class="hint" id="h5" style="display:none">Важливе правило →</p>
+</div></section>
+
+<section class="s"><div class="c">
+  <span class="pill or">Місія 4 з 10 · гра 🙈</span>
+  <h2>Закрийте зайве перед фото</h2>
+  <p class="lead" style="font-size:18px">Натисніть на рядки, які <b>не можна</b> показувати нікому:</p>
+  <div class="doc" id="doc">
+    <p style="font-weight:700;font-size:18px;text-align:center;margin-bottom:6px">Рахунок за газ</p>
+    <button class="dl" data-s="1">ПІБ: Іваненко О. П.</button>
+    <button class="dl" data-s="0">Сума: 312 грн</button>
+    <button class="dl" data-s="1">Картка: 5375 4100 1234 5678</button>
+    <button class="dl" data-s="0">Сплатити до: 20.12</button>
+    <button class="dl" data-s="1">РНОКПП: 3012345678</button>
+  </div>
+  <div id="docnote"></div>
+</div></section>
+
+<!-- М5 як питати -->
+<section class="s" data-id="m5"><div class="c">
+  <span class="pill or">Місія 5 з 10 · 🎯</span>
+  <h2>Яке питання краще?</h2>
+  <p class="lead" style="font-size:18px">Натисніть на варіант, який вам здається кращим:</p>
+  <div class="chips">
+    <button class="opt" data-good="0"><span class="vl">А</span>«Котел»</button>
+    <button class="opt" data-good="1"><span class="vl">Б</span>«Котел Ariston показує помилку 501. Що це означає і що можна безпечно зробити самостійно?»</button>
+  </div>
+  <div id="optnote"></div>
+</div></section>
+
+<section class="s"><div class="c">
+  <span class="pill or">Місія 5 з 10 · гра 🧩</span>
+  <h2>Складіть питання з кубиків</h2>
+  <p class="lead" style="font-size:17px">Формула: <b>що сталося</b> + <b>подробиці</b> + <b>чого хочете</b>. Натискайте кубики по черзі:</p>
+  <div class="slots" id="slots"><span class="slot">1</span><span class="slot">2</span><span class="slot">3</span></div>
+  <div class="cubes" id="cubes">
+    <button class="cube" data-o="2">Що можна зробити самостійно?</button>
+    <button class="cube" data-o="0">Пральна машина не зливає воду.</button>
+    <button class="cube" data-o="1">Модель Samsung, показує 5E.</button>
+  </div>
+  <div class="chat" id="c6" style="min-height:60px"></div>
+</div></section>
+
+<!-- М6 перешліть -->
+<section class="s" data-id="m6"><div class="c">
+  <span class="pill or">Місія 6 з 10 · 📤</span>
+  <h2>Перешліть відповідь рідним</h2>
+  <p class="lead" style="font-size:18px">Натисніть значок «копіювати» ⧉ під відповіддю:</p>
+  <div class="chat" style="flex:none">
+    <div class="b me">Склади список продуктів на борщ</div>
+    <div class="b ai">Буряк, капуста, картопля, морква, цибуля, томатна паста, м’ясо або квасоля 🥕<div class="tools"><button class="tl tapme" id="cpy" aria-label="Копіювати">⧉</button><span class="tl">👍</span><span class="tl">🔊</span></div></div>
+  </div>
+  <div class="msgr" id="msgr"><div class="mh">👨‍👩‍👧 Рідні</div><div class="mbody" id="mbody"></div></div>
+  <p class="hint" id="h6" style="display:none">Тепер поділіться гайдом →</p>
+</div></section>
+
+<section class="s"><div class="c">
+  <span class="pill or">Місія 6 з 10 · 💌</span>
+  <h2>Надіслати мамі, татові, подрузі</h2>
+  <p class="lead" style="font-size:18px">Хай теж спробують:</p>
+  <div class="copybox" id="sharetxt">Дивись, я тепер вмію користуватися ШІ — це як розумний друг у телефоні! Спробуй і ти, це безкоштовно 👉 https://dolkina09-pixel.github.io/shi-v-pobuti/</div>
+  <a class="big" id="viber" href="#" style="background:#7360F2;animation:none">💜 Надіслати у Viber</a>
+  <button class="big ghost" id="shareany">📤 Інший спосіб</button>
+  <button class="skip" data-win="5">Пропустити →</button>
+</div></section>
+
+<!-- М7 шахраї -->
+<section class="s" data-id="m7"><div class="c">
+  <span class="pill or">Місія 7 з 10 · 🕵️</span>
+  <h2>Шахрай чи ні?</h2>
+  <p class="lead" style="font-size:17px" id="scq">Повідомлення 1 з 3. Як думаєте?</p>
+  <div class="sms" id="sms"></div>
+  <div class="tiles" id="scb">
+    <button class="tile2 red" data-a="1">🚨 Шахрай</button>
+    <button class="tile2 green" data-a="0">✅ Безпечно</button>
+  </div>
+  <div id="scnote"></div>
+</div></section>
+
+<!-- М8 помилки -->
+<section class="s" data-id="m8"><div class="c">
+  <span class="pill or">Місія 8 з 10 · 🤔</span>
+  <h2>ШІ теж помиляється</h2>
+  <div class="chat" style="flex:none">
+    <div class="b me">Дай номер гарячої лінії Пенсійного фонду</div>
+    <div class="b ai">Гаряча лінія ПФУ: <b>0 800 123 456</b> ☎️</div>
+  </div>
+  <p class="lead" style="font-size:18px">Що зробите з цим номером?</p>
+  <div class="chips">
+    <button class="opt" data-good="0">📞 Одразу зателефоную</button>
+    <button class="opt" data-good="1">🔎 Спершу перевірю на офіційному сайті</button>
+  </div>
+  <div id="errnote"></div>
+</div></section>
+
+<section class="s"><div class="c">
+  <span class="pill or">Місія 8 з 10 · 🃏</span>
+  <h2>Три золоті правила</h2>
+  <p class="lead" style="font-size:18px">Переверніть кожну картку:</p>
+  <div class="flips">
+    <button class="flip"><span class="fr">💊 Ліки й здоров’я</span><span class="bk">Помічник пояснить, але рішення — тільки з лікарем.</span></button>
+    <button class="flip"><span class="fr">🏛 Гроші й документи</span><span class="bk">Перевіряйте на сайтах, що закінчуються на gov.ua</span></button>
+    <button class="flip"><span class="fr">❓ Сумніваєтесь</span><span class="bk">Спитайте: «Ти впевнений? Де це перевірити?»</span></button>
+  </div>
+  <button class="big ghost" id="win8" style="margin-top:auto;display:none" data-win="7">✅ Усе ясно</button>
+</div></section>
+
+<!-- М9 ідеї -->
+<section class="s" data-id="m9"><div class="c">
+  <span class="pill or">Місія 9 з 10 · 💡</span>
+  <h2>Колесо ідей</h2>
+  <p class="lead" style="font-size:17px">Крутіть — і отримайте готове питання. Сподобалось — натисніть ★</p>
+  <div class="wheelw"><div class="ptr">▼</div><div class="wheel" id="wheel"></div></div>
+  <button class="big" id="spin">🎡 Крутити</button>
+  <div id="idea"></div>
+</div></section>
+
+<section class="s"><div class="c">
+  <span class="pill or">Мої картки ★</span>
+  <h2>Ваші улюблені питання</h2>
+  <p class="lead" style="font-size:17px">Тут зберігаються питання, які ви позначили ★. Вони залишаться на цьому телефоні.</p>
+  <div class="chips" id="favs" style="overflow-y:auto;min-height:0;flex:1"></div>
+</div></section>
+
+<!-- М10 шпаргалка -->
+<section class="s" data-id="m10"><div class="c">
+  <span class="pill or">Місія 10 з 10 · 🏆</span>
+  <h2>Ваша шпаргалка</h2>
+  <div class="cheat">
+    <div><span>⌨️</span><b>Пишіть</b> як вмієте</div>
+    <div><span>🎤</span><b>Говоріть</b> у мікрофон</div>
+    <div><span>📷</span><b>Фото</b> листа чи техніки</div>
+    <div><span>🔁</span><b>Уточнюйте:</b> «простіше»</div>
+  </div>
+  <p class="note no">🚫 Ніколи не пишіть паролі, коди з SMS і номери карток.</p>
+  <p class="note tip">🔎 Ліки, гроші, документи — перевіряйте в лікаря чи на gov.ua.</p>
+  <button class="big" data-win="9">🎓 Завершити гру</button>
 </div></section>
 
 </div>
@@ -276,13 +512,34 @@ a.big{display:block;text-align:center;text-decoration:none}
 <div id="toast"></div>
 <script>
 (function(){
+const TX={lang:'uk-UA',bigOn:'Літери більші 👍',bigOff:'Звичайні літери',noVoice:'Цей телефон не вміє читати вголос',copied:'Скопійовано! 📋',saved:'Збережено в «Мої картки» ★',
+ph:'Запитайте що завгодно',vq:'Скільки варити гречку?',va:'Гречку варіть 15–20 хвилин на слабкому вогні. На 1 склянку крупи — 2 склянки води і дрібка солі.',
+von:'Говоріть — я слухаю… Натисніть ще раз, щоб закінчити',voff:'Розмову закінчено. Ось так просто!',
+pq:['Що означає ця помилка?','Поясни цей чек','Яка кнопка вмикає субтитри?'],
+pa:['E01 — котел не може запалитися. Перевірте, чи відкритий газовий кран, і натисніть Reset. Не допомогло — викличте майстра.','Це чек на 3 товари. ПДВ уже входить у ціну — доплачувати нічого не треба.','На більшості пультів — кнопка «SUBT» або «CC». Якщо нема — натисніть «Menu» і знайдіть «Субтитри».'],
+docok:'Чудово! Тепер фото безпечне: суму і дату помічник побачить, а особисте — ні.',docno:'Це можна показувати — тут нічого особистого 👍',
+chOk:'Так! Тут є подробиці: що за котел, яка помилка і чого ви хочете. З таким питанням помічник точно допоможе.',chNo:'Так собі: одне слово — і помічник не знає, що сталося. Спробуйте інший варіант.',cubesNext:'А тепер складіть своє →',
+cubeNo:['Спершу — що сталося 🙂','Тепер — подробиці 🙂','І наостанок — чого ви хочете 🙂'],
+cubeA:'Код 5E — засмічений фільтр зливу. Вимкніть машину, підставте ємність і відкрутіть фільтр унизу спереду. Почистіть і закрутіть назад.',
+borsch:'Буряк, капуста, картопля, морква, цибуля, томатна паста, м’ясо або квасоля 🥕',
+smsQ:'Повідомлення {n} з 3. Як думаєте?',yes:'Правильно!',no:'Ні.',nextMsg:'Наступне →',finish:'Завершити →',
+sms:[['SMS · невідомий номер','Вітаємо! Вам нараховано виплату 6 500 грн. Перейдіть за посиланням і введіть дані картки: bit.ly/vyplata-ua',1,'Держава не просить дані картки в SMS і не надсилає дивних посилань. Видаліть таке повідомлення.'],
+['SMS · Дія','Ваш код для входу: 4821. Нікому не повідомляйте цей код.',0,'Це звичайний код, якщо ви самі щойно входили в Дію. Головне — нікому його не кажіть, навіть «працівнику банку».'],
+['Viber · новий номер','Мам, це я, телефон розбився, пишу з чужого. Терміново скинь 3 000 на цю картку, потім поясню!',1,'Класична схема. Покладіть трубку і зателефонуйте рідній людині на її звичайний номер.']],
+scWin:'Ви вгадали {n} з 3. Сумніваєтесь у повідомленні — спитайте помічника: «Це схоже на шахрайство?»',
+errOk:'Правильно! Номери, ціни, закони — завжди перевіряйте на офіційному сайті. Справжня гаряча лінія ПФУ — 0 800 503 753.',errNo:'Обережно! Помічник іноді вигадує номери. Цей — вигаданий. Справжній — на сайті pfu.gov.ua.',
+ideas:[['🌱','Коли садити розсаду помідорів у Київській області?'],['🍲','Що приготувати на обід з того, що є: курка, рис, морква?'],['🩺','Склади список питань до лікаря про біль у коліні'],['📺','Як налаштувати канали на телевізорі Samsung?'],['📄','Поясни простими словами, що написано в цьому листі'],['🎁','Що подарувати онуці на 10 років до 500 грн?'],['💌','Напиши тепле привітання з днем народження для сестри'],['🌍','Переклади англійською: «Дякую за допомогу, ви дуже добрі»']],
+save:'Зберегти',tryIt:'Спробувати',noFav:'Поки порожньо. Покрутіть колесо ідей і натисніть ★ — питання з’явиться тут.'};
+const WINTXT=['Ви знаєте, як встановити помічника і не потрапити на підробку.','Ви поставили перше питання і навчилися уточнювати. Це головне вміння!','Тепер можна не писати — достатньо сказати.','Ви вмієте показати фото і знаєте, що закривати.','Ви знаєте формулу хорошого питання.','Ви вмієте переслати відповідь рідним.','',
+'Ви знаєте, де ШІ може помилитися і як перевірити.','У вас є власні улюблені питання ★','Ви пройшли всю гру! Тепер ШІ — ваш розумний друг у телефоні 🎓'];
+
 const t=document.getElementById('track'),S=[...t.children],N=S.length,num=document.getElementById('num'),prev=document.getElementById('prev'),next=document.getElementById('next');
 const LS={get(k,d){try{const v=localStorage.getItem('shi2-'+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem('shi2-'+k,JSON.stringify(v))}catch(e){}}};
-let done=LS.get('done',[]),os=LS.get('os',null),walkerAt=Math.min(done.length,9);
+let done=LS.get('done',[]),os=LS.get('os',null);const nextI=()=>{for(let i=0;i<10;i++)if(!done.includes(i))return i;return 9};let walkerAt=nextI();
 const idx=()=>Math.round(t.scrollLeft/t.clientWidth);
 function go(i){i=Math.max(0,Math.min(N-1,i));t.scrollTo({left:i*t.clientWidth,behavior:'smooth'})}
 function goId(id){const i=S.findIndex(s=>s.dataset.id===id);if(i>=0)go(i)}
-function upd(){const i=idx();num.textContent=(i+1)+' / '+N;prev.disabled=i===0;next.disabled=i===N-1;LS.set('pos',i);if(S[i].dataset.id==='map')walkTo(Math.min(done.length,9))}
+function upd(){const i=idx();num.textContent=(i+1)+' / '+N;prev.disabled=i===0;next.disabled=i===N-1;LS.set('pos',i);if(S[i].dataset.id==='map')walkTo(nextI())}
 let raf;t.addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(upd)},{passive:true});
 prev.onclick=()=>go(idx()-1);next.onclick=()=>go(idx()+1);
 addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(idx()+1);if(e.key==='ArrowLeft')go(idx()-1)});
@@ -301,7 +558,7 @@ let di=0;const demo=document.getElementById('demo');
 function loop(){const [q,a]=demos[di];demo.innerHTML='';setTimeout(()=>{bubble(demo,'me',q);setTimeout(()=>aiReply(demo,a,()=>setTimeout(()=>{di=(di+1)%demos.length;loop()},2600)),700)},300)}
 loop();
 /* карта */
-const M=[['📲','Встановіть','m1'],['💬','Перше питання','m2'],['🎤','Скажіть голосом'],['📷','Покажіть фото'],['🎯','Як питати'],['📤','Перешліть рідним'],['🕵️','Шахрай чи ні?'],['🤔','ШІ теж помиляється'],['💡','Ідеї на щодня'],['🏆','Шпаргалка']];
+const M=[['📲','Встановіть','m1'],['💬','Перше питання','m2'],['🎤','Скажіть голосом','m3'],['📷','Покажіть фото','m4'],['🎯','Як питати','m5'],['📤','Перешліть рідним','m6'],['🕵️','Шахрай чи ні?','m7'],['🤔','ШІ теж помиляється','m8'],['💡','Ідеї на щодня','m9'],['🏆','Шпаргалка','m10']];
 const P=M.map((m,i)=>[i%2?262:98,520-i*52]);
 const map=document.getElementById('map');
 let d='M'+P[0][0]+' '+P[0][1];for(let i=1;i<P.length;i++){const a=P[i-1],b=P[i],my=(a[1]+b[1])/2;d+=' C'+a[0]+' '+my+' '+b[0]+' '+my+' '+b[0]+' '+b[1]}
@@ -309,17 +566,17 @@ let html='<path id="road" d="'+d+'" fill="none" stroke="#ECE6D8" stroke-width="2
 M.forEach((m,i)=>{const [x,y]=P[i],lx=i%2?x-36:x+36,anc=i%2?'end':'start';html+='<g class="stop" data-i="'+i+'"><circle class="ring" cx="'+x+'" cy="'+y+'" r="23" fill="#D85A30" opacity="0"/><circle class="dot" cx="'+x+'" cy="'+y+'" r="23" stroke-width="3"/><text x="'+x+'" y="'+(y+8)+'" text-anchor="middle" font-size="22">'+m[0]+'</text><text class="lab" x="'+lx+'" y="'+(y+6)+'" text-anchor="'+anc+'" font-size="19" font-weight="700" fill="#2C2C2A">'+(i+1)+'. '+m[1]+'</text></g>'});
 html+='<g id="walker" class="still"><g class="bd"><line class="lg1" x1="0" y1="0" x2="0" y2="14" stroke="#2C2C2A" stroke-width="4" stroke-linecap="round" transform="translate(-4 -6)"/><line class="lg2" x1="0" y1="0" x2="0" y2="14" stroke="#2C2C2A" stroke-width="4" stroke-linecap="round" transform="translate(4 -6)"/><path d="M-12 -4 q0 -26 12 -26 q12 0 12 26 z" fill="#FAC775" stroke="#2C2C2A" stroke-width="2.5"/><circle cx="0" cy="-38" r="10" fill="#F5C4B3" stroke="#2C2C2A" stroke-width="2.5"/><circle cx="-3.5" cy="-39" r="1.6" fill="#2C2C2A"/><circle cx="3.5" cy="-39" r="1.6" fill="#2C2C2A"/></g></g>';
 map.innerHTML=html;
-function paintStops(){map.querySelectorAll('.stop').forEach(g=>{const i=+g.dataset.i,c=g.querySelector('.dot');g.classList.toggle('next',i===done.length);c.setAttribute('fill',done.includes(i)?'#E1F5EE':i===done.length?'#fff':'#F6F2EA');c.setAttribute('stroke',done.includes(i)?'#1D9E75':i===done.length?'#D85A30':'#D3D1C7')})}
+function paintStops(){map.querySelectorAll('.stop').forEach(g=>{const i=+g.dataset.i,c=g.querySelector('.dot');const nx=nextI();g.classList.toggle('next',i===nx&&!done.includes(i));c.setAttribute('fill',done.includes(i)?'#E1F5EE':i===nx?'#fff':'#F6F2EA');c.setAttribute('stroke',done.includes(i)?'#1D9E75':i===nx?'#D85A30':'#D3D1C7')})}
 map.querySelectorAll('.stop').forEach(g=>g.onclick=()=>{const m=M[+g.dataset.i];if(m[2])goId(m[2]);else{toast('Ця місія ще готується 🚧');goId('m2');setTimeout(()=>go(N-1),10)}});
 const road=map.querySelector('#road'),W=map.querySelector('#walker'),L=road.getTotalLength();
 const lenAt=[];(function(){let k=0;for(let s=0;s<=L;s+=2){const p=road.getPointAtLength(s);if(k<P.length&&Math.hypot(p.x-P[k][0],p.y-P[k][1])<4){lenAt[k++]=s}}while(k<P.length)lenAt[k++]=L})();
-function place(len){const p=road.getPointAtLength(len);W.setAttribute('transform','translate('+(p.x+(p.x<180?-30:30))+' '+(p.y-4)+')')}
+function place(len){const p=road.getPointAtLength(len);W.setAttribute('transform','translate('+p.x+' '+(p.y-16)+') scale(.85)')}
 place(lenAt[walkerAt]);
 let wraf;function walkTo(k){if(k===walkerAt){place(lenAt[k]);return}const a=lenAt[walkerAt],b=lenAt[k],t0=performance.now(),dur=900*Math.abs(k-walkerAt)+600;W.classList.remove('still');cancelAnimationFrame(wraf);
 (function st(n){const q=Math.min(1,(n-t0)/dur);place(a+(b-a)*q);if(q<1)wraf=requestAnimationFrame(st);else{walkerAt=k;W.classList.add('still')}})(t0)}
 /* перемога */
 function win(i,text){if(!done.includes(i)){done.push(i);done.sort();LS.set('done',done)}stars();paintStops();confetti();
-document.getElementById('wint').textContent='Місія '+(i+1)+' виконана!';document.getElementById('winp').textContent=text;
+document.getElementById('wint').textContent=i===9?'Усі 10 місій пройдено!':'Місія '+(i+1)+' виконана!';document.getElementById('winp').textContent=text;
 document.getElementById('wins').innerHTML=[0,1,2].map(k=>'<span style="animation-delay:'+(0.2+k*0.25)+'s">⭐</span>').join('');document.getElementById('win').classList.add('on')}
 document.getElementById('winmap').onclick=()=>{document.getElementById('win').classList.remove('on');goId('map')};
 /* М1 */
@@ -353,6 +610,71 @@ const ok=()=>toast('Скопійовано! Тепер вставте в ChatGPT
 if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(ok,ok);else ok();
 window.open('https://chatgpt.com/','_blank','noopener')};
 document.getElementById('done2').onclick=()=>win(1,'Ви поставили перше питання і навчилися уточнювати. Це головне вміння!');
+
+/* загальне: data-win */
+document.querySelectorAll('[data-win]').forEach(b=>b.addEventListener('click',()=>win(+b.dataset.win,WINTXT[+b.dataset.win])));
+/* вголос і А+ */
+const sayB=document.getElementById('say'),aaB=document.getElementById('aa');
+if(LS.get('lg',false)){document.body.classList.add('lg');aaB.classList.add('on')}
+aaB.onclick=()=>{const on=document.body.classList.toggle('lg');aaB.classList.toggle('on',on);LS.set('lg',on);toast(on?TX.bigOn:TX.bigOff)};
+let speaking=false;
+sayB.onclick=()=>{if(!('speechSynthesis' in window)){toast(TX.noVoice);return}
+ if(speaking){speechSynthesis.cancel();speaking=false;sayB.classList.remove('on');return}
+ const c=S[idx()].querySelector('.c');const parts=[...c.querySelectorAll('h1,h2,.lead,.note,.st1,.mini,.b,.sms,.copybox,.idea p')].filter(e=>e.offsetParent).map(e=>e.innerText.replace(/[\u{1F300}-\u{1FAFF}☀-➿]/gu,'')).join('. ');
+ const u=new SpeechSynthesisUtterance(parts);u.lang=TX.lang;u.rate=.92;const v=speechSynthesis.getVoices().find(v=>v.lang&&v.lang.toLowerCase().startsWith(TX.lang.slice(0,2)));if(v)u.voice=v;
+ u.onend=u.onerror=()=>{speaking=false;sayB.classList.remove('on')};speechSynthesis.cancel();speechSynthesis.speak(u);speaking=true;sayB.classList.add('on')};
+t.addEventListener('scroll',()=>{if(speaking){speechSynthesis.cancel();speaking=false;sayB.classList.remove('on')}},{passive:true});
+/* М3 мікрофон */
+const mic=document.getElementById('mic'),vf=document.getElementById('vf'),c4=document.getElementById('c4');let micUsed=false;
+mic.onclick=()=>{if(micUsed)return;micUsed=true;mic.classList.remove('tapme');mic.classList.add('rec');vf.classList.add('typing');vf.innerHTML='<span class="wave"><i></i><i></i><i></i><i></i><i></i></span>';
+ setTimeout(()=>{const w=TX.vq.split(' ');let i=0;const iv=setInterval(()=>{vf.textContent=w.slice(0,++i).join(' ');if(i>=w.length){clearInterval(iv);mic.classList.remove('rec');
+ setTimeout(()=>{bubble(c4,'me',TX.vq);vf.textContent=TX.ph;vf.classList.remove('typing');aiReply(c4,TX.va,()=>{document.getElementById('h4').style.display='block'})},700)}},260)},1200)};
+const vbig=document.getElementById('vbig'),vcap=document.getElementById('vcap');
+vbig.onclick=()=>{const on=vbig.classList.toggle('live');vbig.classList.toggle('tapme',!on);vbig.textContent=on?'':'〰';vcap.textContent=on?TX.von:TX.voff};
+/* М4 фото */
+const c5=document.getElementById('c5');let picDone=false;
+document.querySelectorAll('.pic').forEach(b=>b.onclick=()=>{if(picDone)return;picDone=true;b.classList.add('on');const f=document.createElement('div');f.className='flash';document.body.appendChild(f);setTimeout(()=>f.remove(),600);
+ const p=+b.dataset.p;const ph=bubble(c5,'me');ph.innerHTML='<div class="photo">'+b.querySelector('svg').outerHTML+'</div>'+TX.pq[p];
+ setTimeout(()=>aiReply(c5,TX.pa[p],()=>{document.getElementById('h5').style.display='block'}),600)});
+let cov=0;document.querySelectorAll('.dl').forEach(d=>d.onclick=()=>{if(d.dataset.s==='1'){if(!d.classList.contains('cov')){d.classList.add('cov');cov++;
+ if(cov===3){document.getElementById('docnote').innerHTML='<p class="note ok">'+TX.docok+'</p>';setTimeout(()=>win(3,WINTXT[3]),1000)}}}else toast(TX.docno)});
+/* М5 */
+document.querySelectorAll('#optnote').length;
+function optGroup(sel,note,okT,noT,after){document.querySelectorAll(sel).forEach(o=>o.onclick=()=>{const n=document.getElementById(note);
+ if(o.dataset.good==='1'){o.classList.add('good');n.innerHTML='<p class="note ok">'+okT+'</p>';after&&after()}else{o.classList.remove('bad');void o.offsetWidth;o.classList.add('bad');n.innerHTML='<p class="note no">'+noT+'</p>'}})}
+optGroup('[data-id=m5] .opt','optnote',TX.chOk,TX.chNo,()=>setTimeout(()=>{const h=document.createElement('p');h.className='hint';h.textContent=TX.cubesNext;document.getElementById('optnote').appendChild(h)},600));
+let need=0;const slots=[...document.querySelectorAll('.slot')],c6=document.getElementById('c6');
+document.querySelectorAll('.cube').forEach(c=>c.onclick=()=>{if(+c.dataset.o!==need){c.classList.remove('no');void c.offsetWidth;c.classList.add('no');toast(TX.cubeNo[need]);return}
+ slots[need].textContent=c.textContent;slots[need].classList.add('full');c.classList.add('used');need++;
+ if(need===3){const q=slots.map(s=>s.textContent).join(' ');setTimeout(()=>{bubble(c6,'me',q);aiReply(c6,TX.cubeA,()=>setTimeout(()=>win(4,WINTXT[4]),900))},400)}});
+/* М6 */
+document.getElementById('cpy').onclick=function(){if(this.dataset.u)return;this.dataset.u=1;this.classList.remove('tapme');toast(TX.copied);
+ setTimeout(()=>{const m=document.createElement('div');m.className='mb';m.textContent=TX.borsch;document.getElementById('mbody').appendChild(m);document.getElementById('h6').style.display='block'},900)};
+const st=document.getElementById('sharetxt').textContent;
+document.getElementById('viber').href='viber://forward?text='+encodeURIComponent(st);
+document.getElementById('viber').addEventListener('click',()=>setTimeout(()=>win(5,WINTXT[5]),1500));
+document.getElementById('shareany').onclick=()=>{if(navigator.share)navigator.share({text:st}).then(()=>win(5,WINTXT[5]),()=>{});else{navigator.clipboard&&navigator.clipboard.writeText(st);toast(TX.copied);setTimeout(()=>win(5,WINTXT[5]),1200)}};
+/* М7 шахраї */
+let sc=0,scOk=0;const sms=document.getElementById('sms'),scn=document.getElementById('scnote');
+function showSms(){sms.innerHTML='<small>'+TX.sms[sc][0]+'</small>'+TX.sms[sc][1];sms.style.animation='none';void sms.offsetWidth;sms.style.animation='';document.getElementById('scq').textContent=TX.smsQ.replace('{n}',sc+1);scn.innerHTML='';document.getElementById('scb').style.display='grid'}
+showSms();
+document.querySelectorAll('.tile2').forEach(b=>b.onclick=()=>{const right=+b.dataset.a===TX.sms[sc][2];if(right)scOk++;document.getElementById('scb').style.display='none';
+ scn.innerHTML='<p class="note '+(right?'ok':'no')+'">'+(right?TX.yes:TX.no)+' '+TX.sms[sc][3]+'</p><button class="big ghost" id="scnext" style="margin-top:10px">'+(sc<2?TX.nextMsg:TX.finish)+'</button>';
+ document.getElementById('scnext').onclick=()=>{if(sc<2){sc++;showSms()}else win(6,TX.scWin.replace('{n}',scOk))}});
+/* М8 */
+optGroup('[data-id=m8] .opt','errnote',TX.errOk,TX.errNo);
+let flipped=0;document.querySelectorAll('.flip').forEach(f=>f.onclick=()=>{if(!f.classList.contains('on')){f.classList.add('on');flipped++;if(flipped===3)document.getElementById('win8').style.display='block'}});
+/* М9 колесо */
+const wheel=document.getElementById('wheel');TX.ideas.forEach((d,i)=>{const a=(i*45+22.5)*Math.PI/180;wheel.insertAdjacentHTML('beforeend','<b style="transform:translate('+(Math.sin(a)*66)+'px,'+(-Math.cos(a)*66)+'px)">'+d[0]+'</b>')});
+let rot=0,favs=LS.get('favs',[]);
+function renderFavs(){const f=document.getElementById('favs');f.innerHTML=favs.length?favs.map(q=>'<button class="fav">★ '+q+'</button>').join(''):'<p class="note tip">'+TX.noFav+'</p>';
+ f.querySelectorAll('.fav').forEach(b=>b.onclick=()=>{const q=b.textContent.slice(2);navigator.clipboard&&navigator.clipboard.writeText(q);toast(TX.copied);window.open('https://chatgpt.com/','_blank','noopener')})}
+renderFavs();
+document.getElementById('spin').onclick=()=>{const k=Math.floor(Math.random()*8);rot+=1440+(360-(k*45+22.5))-(rot%360);wheel.style.transform='rotate('+rot+'deg)';document.getElementById('idea').innerHTML='';
+ setTimeout(()=>{const [e,q]=TX.ideas[k];const on=favs.includes(q);document.getElementById('idea').innerHTML='<div class="idea"><p>'+e+' «'+q+'»</p><div class="irow"><button class="star'+(on?' on':'')+'">★ '+TX.save+'</button><button class="cg">📋 '+TX.tryIt+'</button></div></div>';
+  const sb=document.querySelector('#idea .star');sb.onclick=()=>{if(!favs.includes(q)){favs.push(q);LS.set('favs',favs);renderFavs();sb.classList.add('on');toast(TX.saved);setTimeout(()=>win(8,WINTXT[8]),900)}};
+  document.querySelector('#idea .cg').onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText(q);toast(TX.copied);window.open('https://chatgpt.com/','_blank','noopener')}},3300)};
+
 stars();paintStops();
 const p0=LS.get('pos',0);requestAnimationFrame(()=>{t.style.scrollBehavior='auto';t.scrollLeft=p0*t.clientWidth;t.style.scrollBehavior='';upd()});
 addEventListener('resize',()=>{t.style.scrollBehavior='auto';t.scrollLeft=idx()*t.clientWidth;t.style.scrollBehavior=''});
