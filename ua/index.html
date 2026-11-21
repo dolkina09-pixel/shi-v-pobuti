@@ -169,7 +169,7 @@ html,body{margin:0;height:100%;background:#EDE8DC;font-family:'Golos Text',Arial
 <div class="bar"><button id="p" type="button" aria-label="Попередня карточка">← Назад</button><span id="n">1 / 50</span><button id="x" type="button" aria-label="Наступна карточка">Далі →</button></div>
 <script>
 const t=document.getElementById('t'),n=document.getElementById('n'),p=document.getElementById('p'),x=document.getElementById('x'),N=50;
-function fit(){const w=t.clientWidth,s=Math.min((w-16)/600,(t.clientHeight-16)/840,1.1);document.querySelectorAll('.box').forEach(b=>{b.style.width=(600*s)+'px';b.style.height=(840*s)+'px';b.firstChild.style.transform='scale('+s+')';});}
+function fit(){const w=t.clientWidth,h=t.clientHeight,s=Math.min((w-16)/600,(h-24)/840,1.1),bh=Math.max(840*s,h-24),ih=bh/s;document.querySelectorAll('.box').forEach(b=>{b.style.width=(600*s)+'px';b.style.height=bh+'px';const f=b.firstChild;f.style.height=ih+'px';f.style.transform='scale('+s+')';const sl=f.querySelector('.slide');if(sl)sl.style.height=ih+'px';});}
 function cur(){return Math.round(t.scrollLeft/t.clientWidth);}
 function upd(){const i=cur();n.textContent=(i+1)+' / '+N;p.disabled=i<=0;x.disabled=i>=N-1;try{localStorage.setItem('guide-pos',i)}catch(e){}}
 function go(i){t.scrollTo({left:i*t.clientWidth,behavior:'smooth'});}
