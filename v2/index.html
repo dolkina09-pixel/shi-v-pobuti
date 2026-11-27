@@ -129,6 +129,7 @@ h2{font-size:1.55rem;line-height:1.15;margin:0;font-weight:800}
 .tile .e{font-size:2.6rem;line-height:1;animation:float 3s ease-in-out infinite}
 .tile:nth-child(2) .e{animation-delay:.5s}.tile:nth-child(3) .e{animation-delay:1s}.tile:nth-child(4) .e{animation-delay:1.5s}.tile:nth-child(5) .e{animation-delay:.3s}.tile:nth-child(6) .e{animation-delay:.8s}
 @keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(4deg)}}
+.grid2.picked2{gap:6px}.grid2.picked2 .tile{padding:6px 4px;font-size:.95rem;flex-direction:row;justify-content:center;box-shadow:0 3px 0 var(--line)}.grid2.picked2 .tile .e{font-size:1.4rem}.grid2.picked2 .tile.on{box-shadow:0 3px 0 #9BDDBE}
 .grid2.picked{grid-template-columns:repeat(3,1fr);gap:6px}.grid2.picked .tile{padding:6px 2px;font-size:.85rem;gap:2px;box-shadow:0 3px 0 var(--line)}.grid2.picked .tile .e{font-size:1.5rem}
 .tile.on{border-color:var(--gr);background:var(--gr-l);box-shadow:0 5px 0 #9BDDBE}
 .tile:active{transform:translateY(4px);box-shadow:0 1px 0 var(--line)}
@@ -159,10 +160,11 @@ h2{font-size:1.55rem;line-height:1.15;margin:0;font-weight:800}
 .fav{display:flex;gap:8px;align-items:center;background:var(--yl-l);border-radius:14px;padding:10px 12px;font-size:1.02rem;font-weight:700;border:none;text-align:left}
 /* шпаргалка */
 .cheat{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.cheat div{background:#fff;border:2px solid var(--line);border-radius:18px;padding:10px;text-align:center;font-size:1.05rem;font-weight:800;box-shadow:0 4px 0 var(--line);animation:bpop .4s both}
-.cheat div span{display:block;font-size:2rem;animation:float 3s infinite}
-.rule{display:flex;gap:10px;align-items:center;background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px 12px;font-size:1.05rem;font-weight:700;line-height:1.3}
+.cheat div{background:#fff;border:2px solid var(--line);border-radius:18px;padding:7px;text-align:center;font-size:1.05rem;font-weight:800;box-shadow:0 4px 0 var(--line);animation:bpop .4s both}
+.cheat div span{display:block;font-size:1.5rem;animation:float 3s infinite}
+.rule{display:flex;gap:10px;align-items:center;background:#fff;border:2px solid var(--line);border-radius:16px;padding:8px 12px;font-size:1.05rem;font-weight:700;line-height:1.3}
 .rule span{font-size:1.6rem;flex:none}
+.rule.sm{padding:6px 10px;font-size:.95rem}.rule.sm span{font-size:1.25rem}
 /* обкладинка */
 .hero{position:relative;height:200px;flex:none}
 .cloud{position:absolute;font-size:2.2rem;opacity:.9;animation:drift 16s linear infinite}
@@ -190,7 +192,8 @@ h2{font-size:1.55rem;line-height:1.15;margin:0;font-weight:800}
 .man .hd{animation:tilt 3s ease-in-out infinite;transform-origin:50% 90%;transform-box:fill-box}
 @keyframes tilt{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(4deg)}}
 .man .ey{animation:blink 4s infinite;transform-origin:center;transform-box:fill-box}
-.sit{font-size:1.9rem;font-weight:800;line-height:1.15;margin:4px 0 0}
+.clock{position:absolute;left:12px;top:12px;background:var(--yl-l);color:#7A5200;font-weight:800;font-size:1rem;padding:5px 11px;border-radius:14px;z-index:2}
+.sit{font-size:1.75rem;font-weight:800;line-height:1.15;margin:4px 0 0}
 .sitp{font-size:1.25rem;line-height:1.4;margin:0;color:var(--ink)}
 .step{align-self:flex-start;font-size:1rem;font-weight:800;color:var(--soft)}
 .can{display:flex;gap:12px;align-items:center;background:#fff;border:2px solid var(--line);border-radius:18px;padding:8px 12px;font-size:1.08rem;font-weight:700;line-height:1.25;box-shadow:0 4px 0 var(--line);animation:bpop .4s both}
@@ -222,104 +225,130 @@ h2{font-size:1.55rem;line-height:1.15;margin:0;font-weight:800}
 <script>
 const LANG='ua',ICON='data:image/png;base64,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',SITE='https://dolkina09-pixel.github.io/shi-v-pobuti/';
 const D={
-ua:{again10:'↺ Пройти ще раз',restart:'↺ Почати спочатку',meta:'Безкоштовно · 15 хвилин · на вашому телефоні',cTitle:'Навчіться користуватися ChatGPT',cSub:'Розумний друг у вашому телефоні. Ось що ви вмітимете:',
-can:[['💬','Спитати про будь-що — і отримати відповідь'],['📷','Сфотографувати лист — і зрозуміти його'],['🎙','Поговорити голосом, як по телефону']],tryBtn:'Спробувати ▶',
-intro:[['📲','Ще немає ChatGPT у телефоні?','Встановимо за 2 хвилини. Головне — не взяти підробку.'],['💬','Хочете щось дізнатися?','Просто напишіть питання — ChatGPT відповість за секунду.'],
-['🎙','Не хочеться друкувати?','Скажіть голосом — ChatGPT почує і відповість.'],['✉️','Прийшов незрозумілий лист?','Сфотографуйте його — і ChatGPT пояснить простими словами.'],
-['🧩','Відповідь не та, що треба?','Додайте подробиці — і відповідь буде точною.'],['👨‍👩‍👧','Хочете поділитися відповіддю?','Скопіюйте її й надішліть рідним.'],
-['🕵️','Прийшло дивне повідомлення?','Навчимося відрізняти шахраїв за хвилину.'],['🔢','Чи всьому можна вірити?','ChatGPT пояснює, а цифри перевіряйте на офіційному сайті.'],['💡','Що ще можна спитати?','Оберіть свою тему і спробуйте готові питання.']],
-voice:'uk-UA',appName:'ChatGPT',ph:'Запитайте ChatGPT',copied:'Скопійовано! 📋',saved:'Збережено ★',bigOn:'Літери більші 👍',bigOff:'Звичайні літери',noVoice:'Цей телефон не вміє читати вголос',
-slogan:'Спитайте про будь-що',about:'…про',words:['котел 🔥','рахунок 🧾','рецепт 🍲','ліки 💊','лист з ПФУ ✉️','телевізор 📺','город 🌱'],
-sub:'Розумний друг у вашому телефоні',trust:['🆓 Безкоштовно','⏱ 15 хвилин','🙌 Нічого не зламаєте'],start:'Почати навчання ▶',
-mapT:'Ваш шлях: 10 рівнів',mapShort:'Карта',cont:'▶ Продовжити: крок {n}',allDoneBtn:'🎓 Усе пройдено!',
-lvl:'Крок {n} з 10',lvlDone:'Крок {n} пройдено!',allDone:'Ви пройшли всю гру!',nextBtn:'▶ Далі: {t}',toMap:'🗺 Подивитися карту',again:'На початок',again2:'↺ Спробувати ще раз',
-lv:[['📲','Встановіть'],['💬','Перше питання'],['🎤','Голосом'],['📷','Фото'],['🧩','Як питати'],['📤','Переслати рідним'],['🕵️','Шахрай чи ні?'],['🔎','Перевірте'],['💡','Ваші ідеї'],['🏆','Шпаргалка']],
-winTxt:['Ви вмієте встановити помічника і не потрапити на підробку.','Ви поставили перше питання й уточнили відповідь. Це головне вміння!','Тепер можна не писати — достатньо сказати.','Ви вмієте показати фото і знаєте, що закрити.','Ви знаєте формулу доброго питання.','Ви вмієте переслати відповідь рідним.','Тепер шахраям вас не обдурити.','Пояснення — від помічника, точні цифри — з офіційного сайту.','У вас є власні улюблені питання ★','Тепер ШІ — ваш розумний друг у телефоні 🎓'],
-l1t:'Встановіть помічника',l1q:'Який у вас телефон?',l1hint:'Яблучко на звороті — це iPhone. Інакше — Android.',l1ok:'Чудово! Гортаємо далі 👉',
-l1t2:'Знайдіть справжній',search:'Пошук',s1:'Натисніть на поле пошуку 👇',s1find:'Натисніть «Отримати» біля справжнього — від <b>OpenAI</b>',
-s1ok:'Так! Це справжній, від OpenAI 🎉',s1no:'Ой, це підробка! Дивіться на напис OpenAI під назвою',getI:'Отримати',getA:'Встановити',open:'Відкрити',realStore:'Встановити по-справжньому ↗',
-l2t:'Ваше перше питання',s2a:'Натисніть на поле внизу 👇',s2b:'Оберіть питання — я «надрукую» його за вас',s2c:'Тепер натисніть стрілочку ↑',s2d:'Помічник думає… 🤔',s2e:'Не все зрозуміло? Попросіть простіше!',s2ok:'Ура! Ви поговорили з ШІ 🎉',simpler:'Поясни простіше',
-q2:[['Що приготувати з картоплі, яєць і цибулі?','Зробіть деруни 🥔 Натріть 4 картоплини і цибулину, додайте яйце, дрібку солі й ложку борошна. Смажте по 3 хвилини з кожного боку.','Натріть картоплю з цибулею, змішайте з яйцем і посмажте, як млинці. Усе!'],
-['Що означає «ПДВ» у чеку?','ПДВ — це податок на додану вартість. Він уже входить у ціну. У чеку його показують окремим рядком.','Це податок, який уже є в ціні. Доплачувати нічого не треба.'],
-['Як зробити шрифт на телефоні більшим?','iPhone: Параметри → Екран і яскравість → Розмір тексту. Android: Налаштування → Екран → Розмір шрифту.','Відкрийте налаштування, знайдіть «Екран» і посуньте повзунок вправо.']],
-l3t:'Скажіть голосом',s3a:'Не хочеться писати? Натисніть мікрофон 🎙',s3b:'Говоріть… я слухаю 👂',vq:'Скільки варити гречку?',va:'15–20 хвилин на слабкому вогні. На 1 склянку крупи — 2 склянки води.',
-s3c:'А тепер — живу розмову! Натисніть кнопку з хвилькою 〰',listen:'Говоріть, як по телефону',s3d:'Помічник відповідає вголос. Щоб закінчити — натисніть ✕',s3ok:'Ось так просто! 🎉',
-l4t:'Покажіть фото',s4a:'Натисніть плюсик ＋',s4b:'Оберіть «Камера»',menu:['📷  Камера','🖼  Фото','📁  Файли'],s4c:'Наведіть на котел і натисніть велику кнопку',s4d:'Фото готове. Надсилайте ↑',pq:'Що означає ця помилка?',
-pa:'E01 — котел не може запалитися. Перевірте газовий кран і натисніть Reset. Не допомогло — викличте майстра.',s4ok:'Чудово! А тепер важливе правило 👉',
-l4t2:'Закрийте зайве',s4e:'Перед фото документа закрийте особисте. Натисніть на рядки, які не можна показувати',docT:'Рахунок за газ',
-doc:[['ПІБ: Іваненко О. П.',1],['Сума: 312 грн',0],['Картка: 5375 4100 1234 5678',1],['Сплатити до: 20.12',0],['РНОКПП: 3012345678',1]],s4no:'Це можна показувати — тут нічого особистого',s4ok2:'Тепер фото безпечне 👍',
-l5t:'Складіть добре питання',s5a:'Добре питання — з трьох частин. Натискайте кубики по черзі',slots:[['❓','Що сталося'],['🔍','Подробиці'],['🎯','Чого хочу']],
-cubes:['Пральна машина не зливає воду.','Модель Samsung, показує код 5E.','Що можна зробити самостійно?'],cubeNo:['Спершу — що сталося','Тепер — подробиці','Наостанок — чого хочете'],cubeGo:['','Тепер — подробиці 🔍','І чого ви хочете 🎯'],s5ok:'Ідеальне питання! З ним помічник точно допоможе',
-l6t:'Перешліть рідним',borschQ:'Список продуктів на борщ',borsch:'Буряк, капуста, картопля, морква, цибуля, томатна паста, м’ясо',s6a:'Натисніть значок «копіювати» ⧉ під відповіддю',family:'Рідні',famMsg:'Що купити на борщ? 🙂',
-s6b:'Відкрився чат з рідними. Натисніть на поле',paste:'Вставити',s6c:'Натисніть «Вставити»',s6ok:'Надіслано! Рідні вже читають 💌',
-l7t:'Шахрай чи ні?',s7q:'Повідомлення {n} з 3. Як думаєте?',scam:'🚨 Шахрай',safe:'✅ Безпечно',yes:'Правильно!',no:'Ні.',nextMsg:'Наступне ▶',finish:'Завершити ▶',
-sms:[['SMS · невідомий номер','Вам нараховано виплату 6 500 грн. Перейдіть за посиланням і введіть дані картки: bit.ly/vyplata',1,'Держава не просить дані картки в SMS. Видаліть.'],
-['SMS · Дія','Ваш код для входу: 4821. Нікому не повідомляйте цей код.',0,'Звичайний код, якщо ви самі щойно входили. Нікому його не кажіть.'],
-['Viber · новий номер','Мам, це я, телефон розбився. Терміново скинь 3 000 на цю картку!',1,'Класична схема. Зателефонуйте рідній людині на її звичайний номер.']],
-l8t:'Перевірте головне',subQ:'Як оформити субсидію?',s8a:'Помічник пояснює простими словами…',
-subA:'1. Заповніть заяву і декларацію про доходи. 2. Подайте в Пенсійний фонд, ЦНАП або онлайн. 3. Чекайте рішення. Розмір залежить від доходу сім’ї.',
-s8b:'Пояснення є! А суми й терміни — що з ними?',blind:'Вірю на 100%',askLink:'Попрошу посилання на офіційний сайт',s8no:'Обережно: цифри й терміни помічник іноді плутає. Спробуйте ще раз',
-askLink2:'Дай посилання на офіційний сайт',linkA:'Ось офіційна сторінка Пенсійного фонду про субсидії:',s8ok:'Так! Пояснення — від помічника, цифри — з офіційного сайту',
-l9t:'Що вас цікавить?',s9a:'Оберіть, що вам близько',s9b:'Натисніть «Спробувати» або збережіть ★',tryIt:'▶ Спробувати',save:'Зберегти',
+ua:{voice:'uk-UA',appName:'ChatGPT',ph:'Запитайте ChatGPT',copied:'Скопійовано',saved:'Збережено ★',bigOn:'Літери більші',bigOff:'Звичайні літери',noVoice:'Цей телефон не вміє читати вголос',
+meta:'Безкоштовно · 15 хвилин · на вашому телефоні',cTitle:'Штучний інтелект — це не страшно',
+cSub:'За 15 хвилин ви спокійно, крок за кроком навчитеся користуватися ChatGPT — розумним помічником у телефоні. Нічого не зламаєте.',
+can:[['💬','Ставити питання звичайними словами'],['📷','Фотографувати лист — і розуміти його'],['🛡','Не потрапляти на шахраїв']],
+start:'Почати ▶',cont:'Продовжити: крок {n} ▶',restart:'↺ Почати спочатку',again10:'↺ Пройти ще раз',
+lvl:'Крок {n} з 10',sumName:'Підсумок',lvlDone:'Крок {n} пройдено',nextBtn:'Далі: {t} ▶',toMap:'',again:'На початок',again2:'↺ Спробувати ще раз',next:'Далі ▶',understood:'Зрозуміло ▶',tryBtn:'Спробувати ▶',
+allDone:'Тренажер пройдено',finalTxt:'Тепер ви вмієте користуватися ChatGPT. Встановіть його по-справжньому — і питайте про все, що потрібно.',toStart:'На початок',
+lv:[['🤖','що таке ChatGPT'],['🏠','навіщо він вам'],['📲','встановлення'],['👆','кнопки на екрані'],['🍳','перше питання'],['🧺','як питати'],['🥟','питання голосом'],['🔥','фото'],['📩','шахраї'],['📄','що перевіряти']],
+winTxt:['Ви знаєте, що таке ChatGPT і чому його не треба боятися.','Ви знаєте, у яких справах він допомагає.','Ви вмієте встановити справжній ChatGPT і не взяти підробку.','Ви знаєте, що означає кожна кнопка.','Ви поставили перше питання й отримали відповідь.','Ви знаєте, як питати, щоб відповідь була корисною.','Ви вмієте питати голосом і розмовляти, як по телефону.','Ви вмієте показати фото і знаєте, що закрити перед цим.','Ви вмієте розпізнати шахраїв.','Ви знаєте, що перевіряти на офіційних сайтах.'],
+intro:[['🤖','','Що таке ChatGPT?','Це програма у вашому телефоні. Ви пишете або кажете питання звичайними словами — вона відповідає за кілька секунд. Як знайомий, який багато знає й ніколи не втомлюється від питань.'],
+['🏠','','Навіщо він вам?','ChatGPT допомагає зі звичайними справами: пояснити, порадити, підказати. Подивімося на прикладах.'],
+['📲','','Встановимо програму','ChatGPT встановлюється з магазину програм, як будь-яка інша. Це безкоштовно. Важливо взяти справжню програму — від компанії OpenAI.'],
+['👆','','Що де на екрані','Після встановлення ви побачите майже порожній екран і поле внизу. Розберімося, що означає кожна кнопка.'],
+['🍳','☀️ 9:00','Ранок. Що приготувати?','Далі — один звичайний день. У холодильнику картопля, яйця й цибуля. Спитаймо ChatGPT, як спитали б сусідку.'],
+['🧺','🕚 11:00','Пральна машина не зливає воду','Чим точніше питання, тим корисніша відповідь. Добре питання складається з трьох частин.'],
+['🥟','🕐 13:00','Руки в тісті','Друкувати незручно — можна сказати питання вголос. А можна й поговорити з ChatGPT, як по телефону.'],
+['🔥','🕔 17:00','Котел показує помилку','Описувати не обов’язково — достатньо сфотографувати. ChatGPT подивиться і пояснить.'],
+['📩','🕖 19:00','Прийшло дивне повідомлення','Шахраї пишуть від імені банку, держави й навіть рідних. Навчимося їх розпізнавати.'],
+['📄','🕗 20:00','Субсидія: що перевірити','ChatGPT добре пояснює. Але суми, дати й номери телефонів іноді плутає — їх перевіряють на офіційному сайті.']],
+w1a:'Ось як це виглядає. Дивіться:',w1q:'Скільки варити яйце некруто?',w1ans:'3–4 хвилини після того, як вода закипить. Потім покладіть яйце в холодну воду — легше чиститься.',w1b:'Ось і все: питання — відповідь.',
+calm:[['🙂','Нічого не зламаєте — завжди можна почати заново'],['🔒','Нічого не купите випадково — базова версія безкоштовна'],['🗣','Пишіть як вмієте — з помилками, українською чи російською']],
+u2a:'Натисніть на кожну картку',u2more:'Ще {n} — натисніть',u2ok:'Тепер ви бачите, чим він корисний.',
+uses:[['✉️','Пояснити лист','Поясни простими словами, що від мене хочуть у цьому листі','Вам нарахували 312 грн за воду за жовтень. Сплатити треба до 20 листопада. Більше нічого робити не потрібно.'],
+['🍲','Придумати страву','Що приготувати на вечерю з курки й рису?','Плов на сковороді: обсмажте курку з цибулею й морквою, додайте рис і воду, тушкуйте 25 хвилин.'],
+['📺','Розібратися з технікою','Як на пульті ввімкнути субтитри?','На більшості пультів — кнопка «SUBT» або «CC». Якщо такої нема: «Меню» → «Налаштування» → «Субтитри».'],
+['🩺','Підготуватися до лікаря','Склади питання до лікаря про біль у коліні','1. Чому болить саме зранку? 2. Які аналізи здати? 3. Чи можна гуляти й ходити сходами? 4. Що робити, якщо біль посилиться?']],
+l1q:'Який у вас телефон?',l1hint:'Яблучко на звороті — це iPhone. Інакше — Android.',l1ok:'Добре. Переходимо до магазину.',
+search:'Пошук',s1:'Натисніть на поле пошуку',s1find:'Знайшлося три. Справжній — від <b>OpenAI</b>. Натисніть «Отримати» біля нього',
+s1ok:'Правильно. Це справжній ChatGPT від OpenAI.',s1no:'Це підробка. Дивіться на напис під назвою — має бути OpenAI',getI:'Отримати',getA:'Встановити',open:'Відкрити',realStore:'Встановити по-справжньому ↗',
+t4:[['Натисніть на поле внизу','Це поле для питання. Сюди ви пишете, що хочете дізнатися.'],['Тепер натисніть ＋','Плюсик — щоб додати фото або документ.'],['Натисніть мікрофон 🎙','Мікрофон — щоб надиктувати питання замість друкування.'],['Натисніть кнопку з хвилькою','Хвилька — щоб поговорити вголос, як по телефону.'],['І наостанок — три риски ☰ вгорі','Тут зберігаються ваші попередні розмови. Нічого не губиться.']],
+s2a:'Натисніть на поле внизу',s2b:'Оберіть питання — тренажер надрукує його за вас',s2c:'Тепер натисніть стрілочку ↑ — це «надіслати»',s2d:'ChatGPT думає кілька секунд…',s2ok:'Готово. Ви щойно поставили перше питання.',
+q2:[['Що приготувати з картоплі, яєць і цибулі?','Деруни. Натріть 4 картоплини і цибулину, додайте яйце, дрібку солі й ложку борошна. Смажте по 3 хвилини з кожного боку.'],
+['Скільки варити картоплю в мундирі?','20–25 хвилин після закипання. Готовність перевірте виделкою — має легко входити.'],
+['Що приготувати з яєць на сніданок, щоб було ситно?','Омлет з цибулею й сиром: збийте 3 яйця з ложкою молока, обсмажте цибулю, залийте яйцями, накрийте кришкою на 5 хвилин.']],
+s5a:'Натискайте кубики по черзі: спершу що сталося, далі подробиці, наприкінці — чого ви хочете',slots:[['❓','Що сталося'],['🔍','Подробиці'],['🎯','Чого хочу']],
+cubes:['Пральна машина не зливає воду.','Модель Samsung, на екрані код 5E.','Що можна зробити самостійно?'],cubeNo:['Спершу — що сталося','Тепер — подробиці','Наостанок — чого ви хочете'],cubeGo:['','Тепер — подробиці','І чого ви хочете'],s5ok:'Ось таке питання дає точну відповідь.',
+tip6:'Відповідь незрозуміла? Просто напишіть: «Поясни простіше». ChatGPT не ображається і пояснить інакше.',
+s3a:'Натисніть мікрофон 🎙',s3b:'Говоріть… ChatGPT записує',vq:'Скільки варити вареники з картоплею?',va:'5–7 хвилин після того, як спливуть. Воду посоліть, помішуйте, щоб не злиплися.',
+s3c:'А тепер — розмова голосом. Натисніть кнопку з хвилькою',listen:'Говоріть, як по телефону',s3d:'ChatGPT відповідає вголос. Щоб закінчити — натисніть ✕',s3ok:'Ось так просто можна говорити з ChatGPT.',
+s4a:'Натисніть плюсик ＋',s4b:'Оберіть «Камера»',menu:['📷  Камера','🖼  Фото','📁  Файли'],s4c:'Наведіть на котел і натисніть велику кнопку',s4d:'Фото готове. Натисніть ↑',pq:'Що означає ця помилка?',
+pa:'E01 — котел не може запалитися. Перевірте, чи відкритий газовий кран, і натисніть Reset. Якщо не допомогло — викличте майстра.',s4ok:'Готово. Тепер — одне важливе правило.',
+s4e:'Перед фото документа закрийте особисте. Натисніть на рядки, які не можна показувати',docT:'Рахунок за газ',
+doc:[['ПІБ: Іваненко О. П.',1],['Сума: 312 грн',0],['Картка: 5375 4100 1234 5678',1],['Сплатити до: 20.12',0],['РНОКПП: 3012345678',1]],s4no:'Це можна показувати — тут нічого особистого',s4more:'Добре. Залишилось ще {n}',s4ok2:'Правильно. Тепер фото безпечне.',
+s7q:'Повідомлення {n} з 3. Шахрай чи ні?',scam:'🚨 Шахрай',safe:'✅ Безпечно',yes:'Правильно.',no:'Ні.',nextMsg:'Наступне ▶',
+sms:[['SMS · невідомий номер','Вам нараховано виплату 6 500 грн. Перейдіть за посиланням і введіть дані картки: bit.ly/vyplata',1,'Держава не просить дані картки в SMS. Таке повідомлення просто видаліть.'],
+['SMS · Дія','Ваш код для входу: 4821. Нікому не повідомляйте цей код.',0,'Це звичайний код, якщо ви самі щойно входили в Дію. Нікому його не кажіть.'],
+['Viber · новий номер','Мам, це я, телефон розбився. Терміново скинь 3 000 на цю картку!',1,'Класична схема. Покладіть трубку й зателефонуйте рідній людині на її звичайний номер.']],
+subQ:'Як оформити субсидію?',s8a:'ChatGPT пояснює простими словами',
+subA:'1. Заповніть заяву і декларацію про доходи. 2. Подайте їх у Пенсійний фонд, ЦНАП або онлайн. 3. Чекайте рішення. Розмір залежить від доходу сім’ї.',
+s8b:'Пояснення зрозуміле. А суми й терміни — що з ними?',blind:'Повірю на слово',askLink:'Попрошу посилання на офіційний сайт',s8no:'Обережно: цифри й терміни ChatGPT іноді плутає. Спробуйте ще раз',
+askLink2:'Дай посилання на офіційний сайт',linkA:'Ось офіційна сторінка Пенсійного фонду про субсидії:',s8ok:'Правильно. Пояснення — від ChatGPT, точні цифри — з офіційного сайту.',
+sumT:'Ваша шпаргалка',cheat:[['⌨️','Пишіть як вмієте'],['🎙','Можна голосом'],['📷','Можна фото'],['🔁','«Поясни простіше»']],
+rules:[['🚫','Ніколи не пишіть паролі, коди з SMS і номери карток'],['🩺','Ліки й лікування — тільки з лікарем'],['🔗','Суми й терміни — перевіряйте на gov.ua']],
+s9a:'Що спитати завтра? Оберіть тему',s9b:'Натисніть «Спробувати» або збережіть ★',tryIt:'Спробувати ↗',save:'Зберегти',
 spheres:[['🌱','Город',['Коли садити розсаду помідорів?','Чим підживити огірки без хімії?','Що за плями на листі? (додайте фото)']],
-['🍲','Кухня',['Що приготувати з курки, рису й моркви?','Рецепт пісного борщу на 4 людини','Чим замінити яйця у тісті?']],
-['🩺','Здоров’я',['Склади питання до лікаря про біль у коліні','Поясни простими словами мій аналіз (додайте фото)','Які вправи для спини можна вдома?']],
-['📺','Техніка',['Як налаштувати канали на телевізорі?','Що означає помилка на пральній машині? (додайте фото)','Як збільшити звук дзвінка на телефоні?']],
+['🍲','Кухня',['Що приготувати з курки, рису й моркви?','Рецепт пісного борщу на 4 людини','Чим замінити яйця в тісті?']],
+['🩺','Здоров’я',['Склади питання до лікаря про біль у коліні','Поясни простими словами мій аналіз (додайте фото)','Які вправи для спини можна робити вдома?']],
+['📺','Техніка',['Як налаштувати канали на телевізорі?','Що означає помилка на пральній машині? (додайте фото)','Як зробити дзвінок на телефоні гучнішим?']],
 ['📄','Документи',['Поясни простими словами цей лист (додайте фото)','Допоможи написати заяву до ЖЕКу','Що означає цей рядок у рахунку?']],
 ['🎁','Свята',['Напиши тепле привітання для сестри','Що подарувати онуці на 10 років?','Ідеї для святкового столу на 6 людей']]],
-l10t:'Ваша шпаргалка',cheat:[['⌨️','Пишіть як вмієте'],['🎙','Говоріть'],['📷','Покажіть фото'],['🔁','Просіть простіше']],
-rules:[['🚫','Ніколи не пишіть паролі, коди з SMS і номери карток'],['🩺','Ліки й лікування — тільки з лікарем'],['🔗','Цифри й терміни — перевіряйте на gov.ua']],l10next:'▶ Фініш',
-l10t2:'Останній крок',s10a:'Поділіться гайдом з рідними — хай теж навчаться!',viber:'💜 Надіслати у Viber',other:'📤 Інший спосіб',finishGame:'🎓 Завершити гру',myCards:'★ Мої картки',
-shareMsg:'Дивись, тепер я вмію користуватися ШІ! Спробуй і ти — це безкоштовна гра'},
-ru:{again10:'↺ Пройти ещё раз',restart:'↺ Начать сначала',meta:'Бесплатно · 15 минут · на вашем телефоне',cTitle:'Научитесь пользоваться ChatGPT',cSub:'Умный друг в вашем телефоне. Вот что вы будете уметь:',
-can:[['💬','Спросить о чём угодно — и получить ответ'],['📷','Сфотографировать письмо — и понять его'],['🎙','Поговорить голосом, как по телефону']],tryBtn:'Попробовать ▶',
-intro:[['📲','Ещё нет ChatGPT в телефоне?','Установим за 2 минуты. Главное — не взять подделку.'],['💬','Хотите что-то узнать?','Просто напишите вопрос — ChatGPT ответит за секунду.'],
-['🎙','Не хочется печатать?','Скажите голосом — ChatGPT услышит и ответит.'],['✉️','Пришло непонятное письмо?','Сфотографируйте его — и ChatGPT объяснит простыми словами.'],
-['🧩','Ответ не тот, что нужен?','Добавьте подробности — и ответ будет точным.'],['👨‍👩‍👧','Хотите поделиться ответом?','Скопируйте его и отправьте родным.'],
-['🕵️','Пришло странное сообщение?','Научимся отличать мошенников за минуту.'],['🔢','Всему ли можно верить?','ChatGPT объясняет, а цифры проверяйте на официальном сайте.'],['💡','Что ещё можно спросить?','Выберите свою тему и попробуйте готовые вопросы.']],
-voice:'ru-RU',appName:'ChatGPT',ph:'Спросите ChatGPT',copied:'Скопировано! 📋',saved:'Сохранено ★',bigOn:'Буквы крупнее 👍',bigOff:'Обычные буквы',noVoice:'Этот телефон не умеет читать вслух',
-slogan:'Спросите о чём угодно',about:'…про',words:['котёл 🔥','счёт 🧾','рецепт 🍲','лекарства 💊','письмо из ПФУ ✉️','телевизор 📺','огород 🌱'],
-sub:'Умный друг в вашем телефоне',trust:['🆓 Бесплатно','⏱ 15 минут','🙌 Ничего не сломаете'],start:'Начать обучение ▶',
-mapT:'Ваш путь: 10 уровней',mapShort:'Карта',cont:'▶ Продолжить: шаг {n}',allDoneBtn:'🎓 Всё пройдено!',
-lvl:'Шаг {n} из 10',lvlDone:'Шаг {n} пройден!',allDone:'Вы прошли всю игру!',nextBtn:'▶ Дальше: {t}',toMap:'🗺 Посмотреть карту',again:'В начало',again2:'↺ Попробовать ещё раз',
-lv:[['📲','Установите'],['💬','Первый вопрос'],['🎤','Голосом'],['📷','Фото'],['🧩','Как спрашивать'],['📤','Переслать родным'],['🕵️','Мошенник или нет?'],['🔎','Проверьте'],['💡','Ваши идеи'],['🏆','Шпаргалка']],
-winTxt:['Вы умеете установить помощника и не попасть на подделку.','Вы задали первый вопрос и уточнили ответ. Это главное умение!','Теперь можно не писать — достаточно сказать.','Вы умеете показать фото и знаете, что закрыть.','Вы знаете формулу хорошего вопроса.','Вы умеете переслать ответ родным.','Теперь мошенникам вас не обмануть.','Объяснение — от помощника, точные цифры — с официального сайта.','У вас есть свои любимые вопросы ★','Теперь ИИ — ваш умный друг в телефоне 🎓'],
-l1t:'Установите помощника',l1q:'Какой у вас телефон?',l1hint:'Яблочко на обратной стороне — это iPhone. Иначе — Android.',l1ok:'Отлично! Листаем дальше 👉',
-l1t2:'Найдите настоящий',search:'Поиск',s1:'Нажмите на поле поиска 👇',s1find:'Нажмите «Загрузить» возле настоящего — от <b>OpenAI</b>',
-s1ok:'Да! Это настоящий, от OpenAI 🎉',s1no:'Ой, это подделка! Смотрите на надпись OpenAI под названием',getI:'Загрузить',getA:'Установить',open:'Открыть',realStore:'Установить по-настоящему ↗',
-l2t:'Ваш первый вопрос',s2a:'Нажмите на поле внизу 👇',s2b:'Выберите вопрос — я «напечатаю» его за вас',s2c:'Теперь нажмите стрелочку ↑',s2d:'Помощник думает… 🤔',s2e:'Не всё понятно? Попросите проще!',s2ok:'Ура! Вы поговорили с ИИ 🎉',simpler:'Объясни проще',
-q2:[['Что приготовить из картошки, яиц и лука?','Сделайте драники 🥔 Натрите 4 картофелины и луковицу, добавьте яйцо, щепотку соли и ложку муки. Жарьте по 3 минуты с каждой стороны.','Натрите картошку с луком, смешайте с яйцом и пожарьте, как блины. Всё!'],
-['Что значит «ПДВ» в чеке?','ПДВ — это налог на добавленную стоимость. Он уже входит в цену. В чеке его показывают отдельной строкой.','Это налог, который уже есть в цене. Доплачивать ничего не нужно.'],
-['Как сделать шрифт на телефоне крупнее?','iPhone: Настройки → Экран и яркость → Размер текста. Android: Настройки → Экран → Размер шрифта.','Откройте настройки, найдите «Экран» и сдвиньте ползунок вправо.']],
-l3t:'Скажите голосом',s3a:'Не хочется писать? Нажмите микрофон 🎙',s3b:'Говорите… я слушаю 👂',vq:'Сколько варить гречку?',va:'15–20 минут на слабом огне. На 1 стакан крупы — 2 стакана воды.',
-s3c:'А теперь — живой разговор! Нажмите кнопку с волной 〰',listen:'Говорите, как по телефону',s3d:'Помощник отвечает вслух. Чтобы закончить — нажмите ✕',s3ok:'Вот так просто! 🎉',
-l4t:'Покажите фото',s4a:'Нажмите плюсик ＋',s4b:'Выберите «Камера»',menu:['📷  Камера','🖼  Фото','📁  Файлы'],s4c:'Наведите на котёл и нажмите большую кнопку',s4d:'Фото готово. Отправляйте ↑',pq:'Что значит эта ошибка?',
-pa:'E01 — котёл не может зажечься. Проверьте газовый кран и нажмите Reset. Не помогло — вызовите мастера.',s4ok:'Отлично! А теперь важное правило 👉',
-l4t2:'Закройте лишнее',s4e:'Перед фото документа закройте личное. Нажмите на строки, которые нельзя показывать',docT:'Счёт за газ',
-doc:[['ФИО: Иваненко О. П.',1],['Сумма: 312 грн',0],['Карта: 5375 4100 1234 5678',1],['Оплатить до: 20.12',0],['РНОКПП: 3012345678',1]],s4no:'Это можно показывать — тут ничего личного',s4ok2:'Теперь фото безопасное 👍',
-l5t:'Сложите хороший вопрос',s5a:'Хороший вопрос — из трёх частей. Нажимайте кубики по очереди',slots:[['❓','Что случилось'],['🔍','Подробности'],['🎯','Чего хочу']],
-cubes:['Стиральная машина не сливает воду.','Модель Samsung, показывает код 5E.','Что можно сделать самостоятельно?'],cubeNo:['Сначала — что случилось','Теперь — подробности','Напоследок — чего хотите'],cubeGo:['','Теперь — подробности 🔍','И чего вы хотите 🎯'],s5ok:'Идеальный вопрос! С ним помощник точно поможет',
-l6t:'Перешлите родным',borschQ:'Список продуктов на борщ',borsch:'Свёкла, капуста, картошка, морковь, лук, томатная паста, мясо',s6a:'Нажмите значок «копировать» ⧉ под ответом',family:'Родные',famMsg:'Что купить на борщ? 🙂',
-s6b:'Открылся чат с родными. Нажмите на поле',paste:'Вставить',s6c:'Нажмите «Вставить»',s6ok:'Отправлено! Родные уже читают 💌',
-l7t:'Мошенник или нет?',s7q:'Сообщение {n} из 3. Как думаете?',scam:'🚨 Мошенник',safe:'✅ Безопасно',yes:'Правильно!',no:'Нет.',nextMsg:'Следующее ▶',finish:'Завершить ▶',
-sms:[['SMS · неизвестный номер','Вам начислена выплата 6 500 грн. Перейдите по ссылке и введите данные карты: bit.ly/vyplata',1,'Государство не просит данные карты в SMS. Удалите.'],
-['SMS · Дия','Ваш код для входа: 4821. Никому не сообщайте этот код.',0,'Обычный код, если вы сами только что входили. Никому его не говорите.'],
-['Viber · новый номер','Мам, это я, телефон разбился. Срочно скинь 3 000 на эту карту!',1,'Классическая схема. Позвоните родному человеку на его обычный номер.']],
-l8t:'Проверьте главное',subQ:'Как оформить субсидию?',s8a:'Помощник объясняет простыми словами…',
-subA:'1. Заполните заявление и декларацию о доходах. 2. Подайте в Пенсионный фонд, ЦНАП или онлайн. 3. Ждите решения. Размер зависит от дохода семьи.',
-s8b:'Объяснение есть! А суммы и сроки — что с ними?',blind:'Верю на 100%',askLink:'Попрошу ссылку на официальный сайт',s8no:'Осторожно: цифры и сроки помощник иногда путает. Попробуйте ещё раз',
-askLink2:'Дай ссылку на официальный сайт',linkA:'Вот официальная страница Пенсионного фонда о субсидиях:',s8ok:'Да! Объяснение — от помощника, цифры — с официального сайта',
-l9t:'Что вам интересно?',s9a:'Выберите, что вам близко',s9b:'Нажмите «Попробовать» или сохраните ★',tryIt:'▶ Попробовать',save:'Сохранить',
+s10a:'Поділіться тренажером з рідними й друзями',viber:'💜 Надіслати у Viber',other:'📤 Інший спосіб',finishGame:'Завершити ✓',myCards:'★ Ваші збережені питання',
+shareMsg:'Подивись: безкоштовний тренажер, як користуватися ChatGPT. Проходиться за 15 хвилин — усе просто'},
+ru:{voice:'ru-RU',appName:'ChatGPT',ph:'Спросите ChatGPT',copied:'Скопировано',saved:'Сохранено ★',bigOn:'Буквы крупнее',bigOff:'Обычные буквы',noVoice:'Этот телефон не умеет читать вслух',
+meta:'Бесплатно · 15 минут · на вашем телефоне',cTitle:'Искусственный интеллект — это не страшно',
+cSub:'За 15 минут вы спокойно, шаг за шагом научитесь пользоваться ChatGPT — умным помощником в телефоне. Ничего не сломаете.',
+can:[['💬','Задавать вопросы обычными словами'],['📷','Фотографировать письмо — и понимать его'],['🛡','Не попадаться на мошенников']],
+start:'Начать ▶',cont:'Продолжить: шаг {n} ▶',restart:'↺ Начать сначала',again10:'↺ Пройти ещё раз',
+lvl:'Шаг {n} из 10',sumName:'Итог',lvlDone:'Шаг {n} пройден',nextBtn:'Дальше: {t} ▶',toMap:'',again:'В начало',again2:'↺ Попробовать ещё раз',next:'Дальше ▶',understood:'Понятно ▶',tryBtn:'Попробовать ▶',
+allDone:'Тренажёр пройден',finalTxt:'Теперь вы умеете пользоваться ChatGPT. Установите его по-настоящему — и спрашивайте обо всём, что нужно.',toStart:'В начало',
+lv:[['🤖','что такое ChatGPT'],['🏠','зачем он вам'],['📲','установка'],['👆','кнопки на экране'],['🍳','первый вопрос'],['🧺','как спрашивать'],['🥟','вопрос голосом'],['🔥','фото'],['📩','мошенники'],['📄','что проверять']],
+winTxt:['Вы знаете, что такое ChatGPT и почему его не нужно бояться.','Вы знаете, в каких делах он помогает.','Вы умеете установить настоящий ChatGPT и не взять подделку.','Вы знаете, что означает каждая кнопка.','Вы задали первый вопрос и получили ответ.','Вы знаете, как спрашивать, чтобы ответ был полезным.','Вы умеете спрашивать голосом и разговаривать, как по телефону.','Вы умеете показать фото и знаете, что закрыть перед этим.','Вы умеете распознать мошенников.','Вы знаете, что проверять на официальных сайтах.'],
+intro:[['🤖','','Что такое ChatGPT?','Это программа в вашем телефоне. Вы пишете или говорите вопрос обычными словами — она отвечает за несколько секунд. Как знакомый, который много знает и никогда не устаёт от вопросов.'],
+['🏠','','Зачем он вам?','ChatGPT помогает с обычными делами: объяснить, посоветовать, подсказать. Посмотрим на примерах.'],
+['📲','','Установим программу','ChatGPT устанавливается из магазина программ, как любая другая. Это бесплатно. Важно взять настоящую программу — от компании OpenAI.'],
+['👆','','Что где на экране','После установки вы увидите почти пустой экран и поле внизу. Разберёмся, что означает каждая кнопка.'],
+['🍳','☀️ 9:00','Утро. Что приготовить?','Дальше — один обычный день. В холодильнике картошка, яйца и лук. Спросим ChatGPT, как спросили бы соседку.'],
+['🧺','🕚 11:00','Стиральная машина не сливает воду','Чем точнее вопрос, тем полезнее ответ. Хороший вопрос состоит из трёх частей.'],
+['🥟','🕐 13:00','Руки в тесте','Печатать неудобно — можно сказать вопрос вслух. А можно и поговорить с ChatGPT, как по телефону.'],
+['🔥','🕔 17:00','Котёл показывает ошибку','Описывать не обязательно — достаточно сфотографировать. ChatGPT посмотрит и объяснит.'],
+['📩','🕖 19:00','Пришло странное сообщение','Мошенники пишут от имени банка, государства и даже родных. Научимся их распознавать.'],
+['📄','🕗 20:00','Субсидия: что проверить','ChatGPT хорошо объясняет. Но суммы, даты и номера телефонов иногда путает — их проверяют на официальном сайте.']],
+w1a:'Вот как это выглядит. Смотрите:',w1q:'Сколько варить яйцо всмятку?',w1ans:'3–4 минуты после того, как вода закипит. Потом положите яйцо в холодную воду — легче чистится.',w1b:'Вот и всё: вопрос — ответ.',
+calm:[['🙂','Ничего не сломаете — всегда можно начать заново'],['🔒','Ничего не купите случайно — базовая версия бесплатная'],['🗣','Пишите как умеете — с ошибками, по-русски или по-украински']],
+u2a:'Нажмите на каждую карточку',u2more:'Ещё {n} — нажмите',u2ok:'Теперь вы видите, чем он полезен.',
+uses:[['✉️','Объяснить письмо','Объясни простыми словами, что от меня хотят в этом письме','Вам начислили 312 грн за воду за октябрь. Оплатить нужно до 20 ноября. Больше ничего делать не нужно.'],
+['🍲','Придумать блюдо','Что приготовить на ужин из курицы и риса?','Плов на сковороде: обжарьте курицу с луком и морковью, добавьте рис и воду, тушите 25 минут.'],
+['📺','Разобраться с техникой','Как на пульте включить субтитры?','На большинстве пультов — кнопка «SUBT» или «CC». Если такой нет: «Меню» → «Настройки» → «Субтитры».'],
+['🩺','Подготовиться к врачу','Составь вопросы врачу о боли в колене','1. Почему болит именно утром? 2. Какие анализы сдать? 3. Можно ли гулять и ходить по лестнице? 4. Что делать, если боль усилится?']],
+l1q:'Какой у вас телефон?',l1hint:'Яблочко на обратной стороне — это iPhone. Иначе — Android.',l1ok:'Хорошо. Переходим в магазин.',
+search:'Поиск',s1:'Нажмите на поле поиска',s1find:'Нашлось три. Настоящий — от <b>OpenAI</b>. Нажмите «Загрузить» возле него',
+s1ok:'Правильно. Это настоящий ChatGPT от OpenAI.',s1no:'Это подделка. Смотрите на надпись под названием — должно быть OpenAI',getI:'Загрузить',getA:'Установить',open:'Открыть',realStore:'Установить по-настоящему ↗',
+t4:[['Нажмите на поле внизу','Это поле для вопроса. Сюда вы пишете, что хотите узнать.'],['Теперь нажмите ＋','Плюсик — чтобы добавить фото или документ.'],['Нажмите микрофон 🎙','Микрофон — чтобы надиктовать вопрос вместо печати.'],['Нажмите кнопку с волной','Волна — чтобы поговорить вслух, как по телефону.'],['И напоследок — три полоски ☰ вверху','Здесь хранятся ваши прошлые разговоры. Ничего не теряется.']],
+s2a:'Нажмите на поле внизу',s2b:'Выберите вопрос — тренажёр напечатает его за вас',s2c:'Теперь нажмите стрелочку ↑ — это «отправить»',s2d:'ChatGPT думает несколько секунд…',s2ok:'Готово. Вы только что задали первый вопрос.',
+q2:[['Что приготовить из картошки, яиц и лука?','Драники. Натрите 4 картофелины и луковицу, добавьте яйцо, щепотку соли и ложку муки. Жарьте по 3 минуты с каждой стороны.'],
+['Сколько варить картошку в мундире?','20–25 минут после закипания. Готовность проверьте вилкой — должна легко входить.'],
+['Что приготовить из яиц на завтрак, чтобы было сытно?','Омлет с луком и сыром: взбейте 3 яйца с ложкой молока, обжарьте лук, залейте яйцами, накройте крышкой на 5 минут.']],
+s5a:'Нажимайте кубики по очереди: сначала что случилось, потом подробности, в конце — чего вы хотите',slots:[['❓','Что случилось'],['🔍','Подробности'],['🎯','Чего хочу']],
+cubes:['Стиральная машина не сливает воду.','Модель Samsung, на экране код 5E.','Что можно сделать самостоятельно?'],cubeNo:['Сначала — что случилось','Теперь — подробности','Напоследок — чего вы хотите'],cubeGo:['','Теперь — подробности','И чего вы хотите'],s5ok:'Вот такой вопрос даёт точный ответ.',
+tip6:'Ответ непонятен? Просто напишите: «Объясни проще». ChatGPT не обижается и объяснит иначе.',
+s3a:'Нажмите микрофон 🎙',s3b:'Говорите… ChatGPT записывает',vq:'Сколько варить вареники с картошкой?',va:'5–7 минут после того, как всплывут. Воду посолите, помешивайте, чтобы не слиплись.',
+s3c:'А теперь — разговор голосом. Нажмите кнопку с волной',listen:'Говорите, как по телефону',s3d:'ChatGPT отвечает вслух. Чтобы закончить — нажмите ✕',s3ok:'Вот так просто можно говорить с ChatGPT.',
+s4a:'Нажмите плюсик ＋',s4b:'Выберите «Камера»',menu:['📷  Камера','🖼  Фото','📁  Файлы'],s4c:'Наведите на котёл и нажмите большую кнопку',s4d:'Фото готово. Нажмите ↑',pq:'Что значит эта ошибка?',
+pa:'E01 — котёл не может зажечься. Проверьте, открыт ли газовый кран, и нажмите Reset. Если не помогло — вызовите мастера.',s4ok:'Готово. Теперь — одно важное правило.',
+s4e:'Перед фото документа закройте личное. Нажмите на строки, которые нельзя показывать',docT:'Счёт за газ',
+doc:[['ФИО: Иваненко О. П.',1],['Сумма: 312 грн',0],['Карта: 5375 4100 1234 5678',1],['Оплатить до: 20.12',0],['РНОКПП: 3012345678',1]],s4no:'Это можно показывать — тут ничего личного',s4more:'Хорошо. Осталось ещё {n}',s4ok2:'Правильно. Теперь фото безопасное.',
+s7q:'Сообщение {n} из 3. Мошенник или нет?',scam:'🚨 Мошенник',safe:'✅ Безопасно',yes:'Правильно.',no:'Нет.',nextMsg:'Следующее ▶',
+sms:[['SMS · неизвестный номер','Вам начислена выплата 6 500 грн. Перейдите по ссылке и введите данные карты: bit.ly/vyplata',1,'Государство не просит данные карты в SMS. Такое сообщение просто удалите.'],
+['SMS · Дия','Ваш код для входа: 4821. Никому не сообщайте этот код.',0,'Это обычный код, если вы сами только что входили в Дию. Никому его не говорите.'],
+['Viber · новый номер','Мам, это я, телефон разбился. Срочно скинь 3 000 на эту карту!',1,'Классическая схема. Положите трубку и позвоните родному человеку на его обычный номер.']],
+subQ:'Как оформить субсидию?',s8a:'ChatGPT объясняет простыми словами',
+subA:'1. Заполните заявление и декларацию о доходах. 2. Подайте их в Пенсионный фонд, ЦНАП или онлайн. 3. Ждите решения. Размер зависит от дохода семьи.',
+s8b:'Объяснение понятное. А суммы и сроки — что с ними?',blind:'Поверю на слово',askLink:'Попрошу ссылку на официальный сайт',s8no:'Осторожно: цифры и сроки ChatGPT иногда путает. Попробуйте ещё раз',
+askLink2:'Дай ссылку на официальный сайт',linkA:'Вот официальная страница Пенсионного фонда о субсидиях:',s8ok:'Правильно. Объяснение — от ChatGPT, точные цифры — с официального сайта.',
+sumT:'Ваша шпаргалка',cheat:[['⌨️','Пишите как умеете'],['🎙','Можно голосом'],['📷','Можно фото'],['🔁','«Объясни проще»']],
+rules:[['🚫','Никогда не пишите пароли, коды из SMS и номера карт'],['🩺','Лекарства и лечение — только с врачом'],['🔗','Суммы и сроки — проверяйте на gov.ua']],
+s9a:'Что спросить завтра? Выберите тему',s9b:'Нажмите «Попробовать» или сохраните ★',tryIt:'Попробовать ↗',save:'Сохранить',
 spheres:[['🌱','Огород',['Когда сажать рассаду помидоров?','Чем подкормить огурцы без химии?','Что за пятна на листьях? (добавьте фото)']],
 ['🍲','Кухня',['Что приготовить из курицы, риса и моркови?','Рецепт постного борща на 4 человека','Чем заменить яйца в тесте?']],
-['🩺','Здоровье',['Составь вопросы врачу о боли в колене','Объясни простыми словами мой анализ (добавьте фото)','Какие упражнения для спины можно дома?']],
+['🩺','Здоровье',['Составь вопросы врачу о боли в колене','Объясни простыми словами мой анализ (добавьте фото)','Какие упражнения для спины можно делать дома?']],
 ['📺','Техника',['Как настроить каналы на телевизоре?','Что значит ошибка на стиральной машине? (добавьте фото)','Как сделать звонок на телефоне громче?']],
 ['📄','Документы',['Объясни простыми словами это письмо (добавьте фото)','Помоги написать заявление в ЖЭК','Что значит эта строка в счёте?']],
 ['🎁','Праздники',['Напиши тёплое поздравление для сестры','Что подарить внучке на 10 лет?','Идеи для праздничного стола на 6 человек']]],
-l10t:'Ваша шпаргалка',cheat:[['⌨️','Пишите как умеете'],['🎙','Говорите'],['📷','Покажите фото'],['🔁','Просите проще']],
-rules:[['🚫','Никогда не пишите пароли, коды из SMS и номера карт'],['🩺','Лекарства и лечение — только с врачом'],['🔗','Цифры и сроки — проверяйте на gov.ua']],l10next:'▶ Финиш',
-l10t2:'Последний шаг',s10a:'Поделитесь гайдом с родными — пусть тоже научатся!',viber:'💜 Отправить в Viber',other:'📤 Другой способ',finishGame:'🎓 Завершить игру',myCards:'★ Мои карточки',
-shareMsg:'Смотри, теперь я умею пользоваться ИИ! Попробуй и ты — это бесплатная игра'}};
+s10a:'Поделитесь тренажёром с родными и друзьями',viber:'💜 Отправить в Viber',other:'📤 Другой способ',finishGame:'Завершить ✓',myCards:'★ Ваши сохранённые вопросы',
+shareMsg:'Посмотри: бесплатный тренажёр, как пользоваться ChatGPT. Проходится за 15 минут — всё просто'}};
 
 const L=D[LANG];
 (function(){
@@ -339,7 +368,7 @@ function person(i){const sk=['#F5C9A8','#E8B48F','#F2D0B4'][i%3],cl=['#9FE1CB','
  '<g class="ey"><circle cx="58" cy="68" r="3.5" fill="#2B2A27"/><circle cx="82" cy="68" r="3.5" fill="#2B2A27"/></g><path d="M60 84q10 7 20 0" fill="none" stroke="#2B2A27" stroke-width="3" stroke-linecap="round"/>'+
  (i%3===1?'<circle cx="58" cy="68" r="9" fill="none" stroke="#2B2A27" stroke-width="2.5"/><circle cx="82" cy="68" r="9" fill="none" stroke="#2B2A27" stroke-width="2.5"/><path d="M67 68h6" stroke="#2B2A27" stroke-width="2.5"/>':'')+
  '</g><rect x="92" y="122" width="22" height="38" rx="5" fill="#fff" stroke="#2B2A27" stroke-width="3"/></svg>'}
-function intro(l){slide(l,c=>{const it=L.intro[l-1];c.innerHTML='<span class="step">'+L.lvl.replace('{n}',l)+'</span><div class="scene"><span class="sun"></span>'+person(l)+'<span class="obj" style="left:170px;top:40px">'+it[0]+'</span><span class="q" style="left:150px;top:18px">?</span></div><p class="sit">'+it[1]+'</p><p class="sitp">'+it[2]+'</p><button class="btn pulse" type="button" style="margin-top:auto">'+L.tryBtn+'</button>';
+function intro(l){slide(l,c=>{const it=L.intro[l-1];c.innerHTML='<span class="step">'+L.lvl.replace('{n}',l)+'</span><div class="scene"><span class="sun"></span>'+(it[1]?'<span class="clock">'+it[1]+'</span>':'')+person(l)+'<span class="obj" style="left:170px;top:48px">'+it[0]+'</span>'+(l>4?'<span class="q" style="left:150px;top:26px">?</span>':'')+'</div><p class="sit">'+it[2]+'</p><p class="sitp">'+it[3]+'</p><button class="btn pulse" type="button" style="margin-top:auto">'+(l<=2?L.next:L.tryBtn)+'</button>';
  c.querySelector('.btn').onclick=()=>{sfx.tap();go(idx()+1)}},'i'+l)}
 /* ---------- кістяк ---------- */
 const track=$('#track');const SL=[];
@@ -355,15 +384,17 @@ function copy(t){try{navigator.clipboard.writeText(t)}catch(e){}}
 function openGPT(t){copy(t);toast(L.copied);window.open('https://chatgpt.com/','_blank','noopener')}
 /* ---------- перемога ---------- */
 function win(l){sfx.win();if(!done.includes(l)){done.push(l);LS.set('done',done)}stars();confetti();
- $('#wkb').innerHTML='<div class="big">🏅</div>';$('#wt').textContent=l===10?L.allDone:L.lvlDone.replace('{n}',l);$('#ws').innerHTML=[0,1,2].map(k=>'<span style="animation-delay:'+(.2+k*.22)+'s">⭐</span>').join('');
- $('#wp').textContent=L.winTxt[l-1];const nx=l<10?l+1:null;
- $('#wnext').textContent=nx?L.nextBtn.replace('{n}',nx).replace('{t}',L.lv[nx-1][1]):L.again;
+ $('#wkb').innerHTML='<div class="big">🏅</div>';$('#wt').textContent=L.lvlDone.replace('{n}',l);$('#ws').innerHTML=[0,1,2].map(k=>'<span style="animation-delay:'+(.2+k*.22)+'s">⭐</span>').join('');
+ $('#wp').textContent=L.winTxt[l-1];const nx=l<10?l+1:11;
+ $('#wnext').textContent=nx<=10?L.nextBtn.replace('{n}',nx).replace('{t}',L.lv[nx-1][1]):L.next;
  $('#wnext').onclick=()=>{$('#win').classList.remove('on');go(nx?firstOf(nx):0)};SL[0].refresh&&SL[0].refresh();
  $('#wmap').style.display='none';
  $('#win').classList.add('on')}
+function final(){sfx.win();confetti(90);$('#wkb').innerHTML='<div class="big">🎓</div>';$('#wt').textContent=L.allDone;$('#ws').innerHTML=[0,1,2,3,4].map(k=>'<span style="animation-delay:'+(.2+k*.18)+'s">⭐</span>').join('');
+ $('#wp').textContent=L.finalTxt;$('#wnext').textContent=L.toStart;$('#wnext').onclick=()=>{$('#win').classList.remove('on');SL[0].refresh&&SL[0].refresh();go(0)};$('#wmap').style.display='none';$('#win').classList.add('on')}
 /* ---------- телефон ---------- */
 function phone(host,{top=L.appName}={}){const p=document.createElement('div');p.className='phone';
- p.innerHTML='<div class="p-top"><span>☰</span>'+top+'<span>✎</span></div><div class="p-msgs"></div><div class="p-ch"></div><div class="p-bar"><button class="pb plus" type="button">＋</button><div class="pf">'+L.ph+'</div><button class="pb mic" type="button">🎙</button><button class="pb dark wave" type="button">〰</button><button class="pb dark send" type="button" style="display:none">↑</button></div>';
+ p.innerHTML='<div class="p-top"><span class="menu" style="border-radius:10px;padding:0 4px">☰</span>'+top+'<span>✎</span></div><div class="p-msgs"></div><div class="p-ch"></div><div class="p-bar"><button class="pb plus" type="button">＋</button><div class="pf">'+L.ph+'</div><button class="pb mic" type="button">🎙</button><button class="pb dark wave" type="button">〰</button><button class="pb dark send" type="button" style="display:none">↑</button></div>';
  host.appendChild(p);const q=s=>p.querySelector(s);const P={el:p,msgs:q('.p-msgs'),field:q('.pf'),plus:q('.plus'),mic:q('.mic'),wave:q('.wave'),send:q('.send'),ch:q('.p-ch'),_h:null,_off:false};
  P.setField=t=>{P.field.textContent=t||L.ph;P.field.classList.toggle('has',!!t);P.send.style.display=t?'flex':'none';P.mic.style.display=t?'none':'flex';P.wave.style.display=t?'none':'flex'};
  P.clear=()=>{p.querySelectorAll('.hl').forEach(e=>e.classList.remove('hl'));if(P._h){P._h.remove();P._h=null}};
@@ -379,145 +410,160 @@ function againBtn(c,fn){const b=document.createElement('button');b.className='ag
 function header(c,l,title){}
 
 /* ===== 0 старт ===== */
-slide(0,c=>{c.style.gap='7px';
- c.innerHTML='<p style="margin:2px 0 0;font-size:1rem;font-weight:700;color:var(--soft)">'+L.meta+'</p><h1>'+L.cTitle+'</h1><p style="margin:0;font-size:1.2rem;color:var(--soft);font-weight:600">'+L.cSub+'</p>'+
-  '<div style="display:flex;flex-direction:column;gap:10px">'+L.can.map((x,i)=>'<div class="can" style="animation-delay:'+(.15+i*.15)+'s"><span>'+x[0]+'</span>'+x[1]+'</div>').join('')+'</div>'+
+slide(0,c=>{c.style.gap='9px';
+ c.innerHTML='<p style="margin:2px 0 0;font-size:1rem;font-weight:700;color:var(--soft)">'+L.meta+'</p><h1 style="font-size:1.65rem">'+L.cTitle+'</h1><p style="margin:0;font-size:1.15rem;line-height:1.45;color:var(--ink)">'+L.cSub+'</p>'+
+  '<div style="display:flex;flex-direction:column;gap:9px">'+L.can.map((x,i)=>'<div class="can" style="animation-delay:'+(.15+i*.15)+'s"><span>'+x[0]+'</span>'+x[1]+'</div>').join('')+'</div>'+
   '<button class="btn pulse" id="startb" type="button" style="margin-top:auto"></button>';
  const sb=c.querySelector('#startb');const rs=document.createElement('button');rs.className='again';rs.type='button';rs.textContent=L.restart;c.appendChild(rs);
  const set=()=>{const n=done.length;sb.textContent=n>=10?L.again10:n?L.cont.replace('{n}',nextLvl()):L.start;rs.style.display=n&&n<10?'block':'none'};set();SL[0].refresh=set;
  const reset=()=>{done=[];LS.set('done',done);stars();set();go(firstOf(1))};
  sb.onclick=()=>{sfx.ok();if(done.length>=10)reset();else go(firstOf(nextLvl()))};rs.onclick=()=>{sfx.tap();reset()};
 },'cover');
+function host(c){const h=document.createElement('div');h.className='host';c.appendChild(h);return h}
 
-/* ===== Рівень 1: вибір телефона ===== */
+/* ===== 1 що це таке ===== */
 intro(1);
+slide(1,c=>{const g=guide(c);const h=host(c);h.style.minHeight='170px';
+ c.insertAdjacentHTML('beforeend','<div style="display:flex;flex-direction:column;gap:5px">'+L.calm.map(x=>'<div class="rule sm"><span>'+x[0]+'</span>'+x[1]+'</div>').join('')+'</div><button class="btn" type="button" id="ok1">'+L.understood+'</button>');
+ function run(){h.innerHTML='';const P=phone(h);g.say(L.w1a);setTimeout(()=>{P.msg('u',L.w1q);setTimeout(()=>P.ai(L.w1ans,()=>g.say(L.w1b,'ok')),500)},600)}
+ run();c.querySelector('#ok1').onclick=()=>win(1);
+},'w1');
+
+/* ===== 2 навіщо ===== */
+intro(2);
+slide(2,c=>{const g=guide(c);g.say(L.u2a);
+ c.insertAdjacentHTML('beforeend','<div class="grid2" id="uses">'+L.uses.map((u,i)=>'<button class="tile" type="button" data-i="'+i+'"><span class="e">'+u[0]+'</span>'+u[1]+'</button>').join('')+'</div><div id="ex" style="display:flex;flex-direction:column;gap:6px"></div><button class="btn" type="button" id="ok2" style="display:none">'+L.next+'</button>');
+ const seen=new Set();c.querySelectorAll('#uses .tile').forEach(t=>t.onclick=()=>{sfx.tap();const i=+t.dataset.i,u=L.uses[i];seen.add(i);c.querySelector('#uses').classList.add('picked2');
+  c.querySelectorAll('#uses .tile').forEach(x=>x.classList.toggle('on',seen.has(+x.dataset.i)));
+  c.querySelector('#ex').innerHTML='<div class="m u" style="max-width:92%">'+u[2]+'</div><div class="m a" style="background:#fff;border:2px solid var(--line);max-width:96%">'+u[3]+'</div>';
+  if(seen.size===4){g.say(L.u2ok,'ok');c.querySelector('#ok2').style.display='block'}else g.say(L.u2more.replace('{n}',4-seen.size))});
+ c.querySelector('#ok2').onclick=()=>win(2);
+},'w2');
+
+/* ===== 3 встановлення ===== */
+intro(3);
 let OS=LS.get('os',null);
-slide(1,c=>{header(c,1,L.l1t);const g=guide(c);g.say(L.l1q);
- c.insertAdjacentHTML('beforeend','<div class="grid2"><button class="tile" data-os="ios" type="button"><span class="e">📱</span>iPhone</button><button class="tile" data-os="and" type="button"><span class="e">🤖</span>Android</button></div><p style="margin:0;font-size:1rem;color:var(--soft);font-weight:600">'+L.l1hint+'</p>');
- c.querySelectorAll('.tile').forEach(b=>{if(b.dataset.os===OS)b.classList.add('on');b.onclick=()=>{OS=b.dataset.os;LS.set('os',OS);c.querySelectorAll('.tile').forEach(x=>x.classList.toggle('on',x===b));sfx.ok();g.say(L.l1ok,'ok');SL.forEach(x=>x.lvl===1&&x.refresh&&x.refresh());setTimeout(()=>go(idx()+1),1100)}});
+slide(3,c=>{const g=guide(c);g.say(L.l1q);
+ c.insertAdjacentHTML('beforeend','<div class="grid2"><button class="tile" data-os="ios" type="button"><span class="e">📱</span>iPhone</button><button class="tile" data-os="and" type="button"><span class="e">🤖</span>Android</button></div><p style="margin:0;font-size:1.05rem;color:var(--soft);font-weight:600">'+L.l1hint+'</p>');
+ c.querySelectorAll('.tile').forEach(b=>{if(b.dataset.os===OS)b.classList.add('on');b.onclick=()=>{OS=b.dataset.os;LS.set('os',OS);c.querySelectorAll('.tile').forEach(x=>x.classList.toggle('on',x===b));sfx.ok();g.say(L.l1ok,'ok');SL.forEach(x=>x.refresh&&x.lvl===3&&x.refresh());setTimeout(()=>go(idx()+1),1100)}});
 },'l1');
-/* ===== Рівень 1: магазин-тренажер ===== */
-const i1=slide(1,c=>{header(c,1,L.l1t2);const g=guide(c);const host=document.createElement('div');host.className='host';c.appendChild(host);
+slide(3,c=>{const g=guide(c);const h=host(c);
  const real=document.createElement('a');real.className='btn wh sm';real.target='_blank';real.rel='noopener';c.appendChild(real);
- function run(){host.innerHTML='';const ios=OS!=='and';const P=phone(host,{top:ios?'App Store':'Google Play'});P.el.querySelector('.p-bar').style.display='none';
-  real.href=ios?'https://apps.apple.com/app/chatgpt/id6448311069':'https://play.google.com/store/apps/details?id=com.openai.chatgpt';real.textContent=L.realStore.replace('{s}',ios?'App Store':'Google Play');
+ function run(){h.innerHTML='';const ios=OS!=='and';const P=phone(h,{top:ios?'App Store':'Google Play'});P.el.querySelector('.p-bar').style.display='none';
+  real.href=ios?'https://apps.apple.com/app/chatgpt/id6448311069':'https://play.google.com/store/apps/details?id=com.openai.chatgpt';real.textContent=L.realStore;
   const sb=document.createElement('div');sb.style.cssText='margin:0 10px;padding:10px 12px;border-radius:12px;background:#F1F0EC;font-size:1rem;color:#888';sb.textContent='🔍 '+L.search;P.msgs.style.justifyContent='flex-start';P.msgs.appendChild(sb);
   g.say(L.s1);P.hl(sb,()=>{sb.style.color='#222';let j=0;const w='ChatGPT';const iv=setInterval(()=>{sb.textContent='🔍 '+w.slice(0,++j);if(j>=w.length){clearInterval(iv);results()}},120)});
-  function results(){const apps=[['🤖','#7F77DD','Chat AI: Ask Bot','Smart Apps Inc.',0],['','','ChatGPT','OpenAI OpCo, LLC',1],['💬','#2FAF7A','GPT Помічник Pro','AI Tools Ltd',0]];
+  function results(){const apps=[['🤖','#7F77DD','Chat AI: Ask Bot','Smart Apps Inc.',0],['','','ChatGPT','OpenAI OpCo, LLC',1],['💬','#2FAF7A','GPT Assistant Pro','AI Tools Ltd',0]];
    apps.forEach(a=>{const r=document.createElement('div');r.className='app';r.innerHTML=(a[4]?'<img class="real" src="'+ICON+'" alt="">':'<span class="real" style="background:'+a[1]+';display:flex;align-items:center;justify-content:center;font-size:1.3rem;border:none">'+a[0]+'</span>')+'<div><b>'+a[2]+'</b><small>'+a[3]+'</small></div><button class="get" type="button">'+(ios?L.getI:L.getA)+'</button>';P.msgs.appendChild(r);
-    r.querySelector('.get').onclick=()=>{if(a[4]){sfx.ok();g.say(L.s1ok,'ok');const gb=r.querySelector('.get');gb.outerHTML='<span class="ring2"></span>';setTimeout(()=>{r.querySelector('.ring2').outerHTML='<button class="get" type="button">'+L.open+'</button>';setTimeout(()=>win(1),700)},1600)}else{sfx.no();r.classList.remove('shake');void r.offsetWidth;r.classList.add('shake');g.say(L.s1no,'no')}}});
+    r.querySelector('.get').onclick=()=>{if(a[4]){sfx.ok();g.say(L.s1ok,'ok');r.querySelector('.get').outerHTML='<span class="ring2"></span>';setTimeout(()=>{r.querySelector('.ring2').outerHTML='<button class="get" type="button">'+L.open+'</button>';setTimeout(()=>win(3),900)},1600)}else{sfx.no();r.classList.remove('shake');void r.offsetWidth;r.classList.add('shake');g.say(L.s1no,'no')}}});
    g.say(L.s1find)}}
  SL[SL.length-1].refresh=run;run();againBtn(c,run);
 },'l1b');
 
-/* ===== Рівень 2: перше питання ===== */
-intro(2);
-slide(2,c=>{header(c,2,L.l2t);const g=guide(c);const host=document.createElement('div');host.className='host';c.appendChild(host);
- function run(){host.innerHTML='';const P=phone(host);let q;
-  g.say(L.s2a);P.hl(P.field,()=>{g.say(L.s2b);P.chips(L.q2.map(x=>x[0]),i=>{q=L.q2[i];P.setField(q[0]);g.say(L.s2c);P.hl(P.send,()=>{P.msg('u',q[0]);P.setField('');g.say(L.s2d);
-   P.ai(q[1],()=>{g.say(L.s2e);P.chips([L.simpler],()=>{P.msg('u',L.simpler);P.ai(q[2],()=>{sfx.ok();g.say(L.s2ok,'ok');setTimeout(()=>win(2),1200)})})})})})})}
+/* ===== 4 кнопки на екрані ===== */
+intro(4);
+slide(4,c=>{const g=guide(c);const h=host(c);
+ function run(){h.innerHTML='';const P=phone(h);const menu=P.el.querySelector('.menu');
+  const tour=[[P.field,L.t4[0]],[P.plus,L.t4[1]],[P.mic,L.t4[2]],[P.wave,L.t4[3]],[menu,L.t4[4]]];let k=0;
+  function stepT(){const [el,t]=tour[k];g.say(t[0]);P.hl(el,()=>{g.say(t[1],'ok');k++;if(k<tour.length)setTimeout(stepT,2600);else setTimeout(()=>win(4),2600)})}
+  stepT()}
  run();againBtn(c,run);
-},'l2');
+},'l4tour');
 
-/* ===== Рівень 3: голос ===== */
-intro(3);
-slide(3,c=>{header(c,3,L.l3t);const g=guide(c);const host=document.createElement('div');host.className='host';c.appendChild(host);
- function run(){host.innerHTML='';const P=phone(host);
+/* ===== 5 перше питання (ранок) ===== */
+intro(5);
+slide(5,c=>{const g=guide(c);const h=host(c);
+ function run(){h.innerHTML='';const P=phone(h);let q;
+  g.say(L.s2a);P.hl(P.field,()=>{g.say(L.s2b);P.chips(L.q2.map(x=>x[0]),i=>{q=L.q2[i];P.setField(q[0]);g.say(L.s2c);P.hl(P.send,()=>{P.msg('u',q[0]);P.setField('');g.say(L.s2d);
+   P.ai(q[1],()=>{sfx.ok();g.say(L.s2ok,'ok');setTimeout(()=>win(5),1600)})})})})}
+ run();againBtn(c,run);
+},'l5');
+
+/* ===== 6 як питати (пральна) ===== */
+intro(6);
+slide(6,c=>{const g=guide(c);g.say(L.s5a);
+ c.insertAdjacentHTML('beforeend','<div class="slots">'+L.slots.map(s=>'<div class="slot"><span class="n">'+s[0]+'</span><span>'+s[1]+'</span></div>').join('')+'</div><div class="cubes">'+[2,0,1].map(o=>'<button class="cube" type="button" data-o="'+o+'">'+L.cubes[o]+'</button>').join('')+'</div><div id="tip6"></div>');
+ let need=0;const slots=[...c.querySelectorAll('.slot')];
+ c.querySelectorAll('.cube').forEach(b=>b.onclick=()=>{if(+b.dataset.o!==need){sfx.no();b.classList.remove('shake');void b.offsetWidth;b.classList.add('shake');g.say(L.cubeNo[need],'no');return}
+  sfx.tap();slots[need].lastChild.textContent=b.textContent;slots[need].classList.add('filled');b.classList.add('used');need++;
+  if(need<3)g.say(L.cubeGo[need]);else{sfx.ok();g.say(L.s5ok,'ok');c.querySelector('#tip6').innerHTML='<div class="rule" style="animation:bpop .4s"><span>💡</span>'+L.tip6+'</div><button class="btn" type="button" style="margin-top:8px">'+L.next+'</button>';c.querySelector('#tip6 .btn').onclick=()=>win(6)}});
+},'l6');
+
+/* ===== 7 голосом (обід) ===== */
+intro(7);
+slide(7,c=>{const g=guide(c);const h=host(c);
+ function run(){h.innerHTML='';const P=phone(h);
   g.say(L.s3a);P.hl(P.mic,()=>{g.say(L.s3b);P.field.classList.add('has');P.field.innerHTML='<span class="wave"><i></i><i></i><i></i><i></i></span>';
    setTimeout(()=>{const w=L.vq.split(' ');let i=0;const iv=setInterval(()=>{P.field.textContent=w.slice(0,++i).join(' ');if(i>=w.length){clearInterval(iv);P.setField(L.vq);g.say(L.s2c);
     P.hl(P.send,()=>{P.msg('u',L.vq);P.setField('');P.ai(L.va,()=>{g.say(L.s3c);P.hl(P.wave,()=>{const f=document.createElement('div');f.className='full';f.style.background='#fff';
      f.innerHTML='<div class="vball"></div><b style="font-size:1.2rem">'+L.listen+'</b><button class="pb" type="button" style="width:56px;height:56px;background:#F3F2EF;font-size:1.5rem">✕</button>';P.el.appendChild(f);g.say(L.s3d);
-     setTimeout(()=>P.hl(f.querySelector('button'),()=>{f.remove();sfx.ok();g.say(L.s3ok,'ok');setTimeout(()=>win(3),1000)}),2200)})})})}},230)},1100)})}
+     setTimeout(()=>P.hl(f.querySelector('button'),()=>{f.remove();sfx.ok();g.say(L.s3ok,'ok');setTimeout(()=>win(7),1300)}),2400)})})})}},230)},1100)})}
  run();againBtn(c,run);
-},'l3');
+},'l7');
 
-/* ===== Рівень 4: фото ===== */
-intro(4);
+/* ===== 8 фото (котел) ===== */
 const BOILER='<svg viewBox="0 0 80 80" width="70" height="70"><rect x="16" y="6" width="48" height="68" rx="6" fill="#fff" stroke="#2B2A27" stroke-width="3"/><rect x="24" y="16" width="32" height="18" rx="3" fill="#2B2A27"/><text x="40" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#FF7B7B">E01</text><circle cx="32" cy="50" r="5" fill="#FFC83D" stroke="#2B2A27" stroke-width="2"/><circle cx="48" cy="50" r="5" fill="#FFC83D" stroke="#2B2A27" stroke-width="2"/></svg>';
-slide(4,c=>{header(c,4,L.l4t);const g=guide(c);const host=document.createElement('div');host.className='host';c.appendChild(host);
- function run(){host.innerHTML='';const P=phone(host);
+intro(8);
+slide(8,c=>{const g=guide(c);const h=host(c);
+ function run(){h.innerHTML='';const P=phone(h);
   g.say(L.s4a);P.hl(P.plus,()=>{const sh=document.createElement('div');sh.className='sheet';sh.innerHTML=L.menu.map((m,i)=>'<button class="si" type="button" data-i="'+i+'">'+m+'</button>').join('');P.el.appendChild(sh);g.say(L.s4b);
    P.hl(sh.querySelector('[data-i="0"]'),()=>{sh.remove();const f=document.createElement('div');f.className='full';f.style.background='#222';f.innerHTML='<div style="border:2px dashed #fff;border-radius:14px;padding:14px;background:#3a3a3a">'+BOILER.replace('width="70" height="70"','width="120" height="120"')+'</div><button class="shutter" type="button" aria-label="📸"></button>';P.el.appendChild(f);g.say(L.s4c);
     P.hl(f.querySelector('.shutter'),()=>{const fl=document.createElement('div');fl.className='flash';P.el.appendChild(fl);setTimeout(()=>fl.remove(),600);f.remove();
-     P.setField(L.pq);P.field.insertAdjacentHTML('afterbegin','<span class="thumb" style="width:28px;height:28px;margin-right:6px;vertical-align:middle">📷</span>');g.say(L.s4d);
-     P.hl(P.send,()=>{P.msg('u','<div class="thumb" style="width:90px;height:90px">'+BOILER+'</div>'+L.pq);P.setField('');P.ai(L.pa,()=>{sfx.ok();g.say(L.s4ok,'ok');setTimeout(()=>go(idx()+1),1800)})})})})})}
- run();againBtn(c,run);
-},'l4');
-slide(4,c=>{header(c,4,L.l4t2);const g=guide(c);g.say(L.s4e);
- c.insertAdjacentHTML('beforeend','<div class="doc"><b style="text-align:center;font-size:1.15rem">'+L.docT+'</b>'+L.doc.map(d=>'<button class="dl" type="button" data-s="'+d[1]+'">'+d[0]+'</button>').join('')+'</div>');
- let n=0;c.querySelectorAll('.dl').forEach(d=>d.onclick=()=>{if(d.dataset.s==='1'){if(!d.classList.contains('cov')){d.classList.add('cov');n++;sfx.tap();if(n===3){sfx.ok();g.say(L.s4ok2,'ok');setTimeout(()=>win(4),1100)}}}else{sfx.no();g.say(L.s4no,'no')}});
-},'l4b');
-
-/* ===== Рівень 5: кубики ===== */
-intro(5);
-slide(5,c=>{header(c,5,L.l5t);const g=guide(c);g.say(L.s5a);
- c.insertAdjacentHTML('beforeend','<div class="slots">'+L.slots.map(s=>'<div class="slot"><span class="n">'+s[0]+'</span><span>'+s[1]+'</span></div>').join('')+'</div><div class="cubes">'+[2,0,1].map(o=>'<button class="cube" type="button" data-o="'+o+'">'+L.cubes[o]+'</button>').join('')+'</div>');
- let need=0;const slots=[...c.querySelectorAll('.slot')];
- c.querySelectorAll('.cube').forEach(b=>b.onclick=()=>{if(+b.dataset.o!==need){sfx.no();b.classList.remove('shake');void b.offsetWidth;b.classList.add('shake');g.say(L.cubeNo[need],'no');return}
-  sfx.tap();slots[need].lastChild.textContent=b.textContent;slots[need].classList.add('filled');b.classList.add('used');need++;
-  if(need<3)g.say(L.cubeGo[need]);else{sfx.ok();g.say(L.s5ok,'ok');setTimeout(()=>win(5),1300)}});
-},'l5');
-
-/* ===== Рівень 6: переслати ===== */
-intro(6);
-slide(6,c=>{header(c,6,L.l6t);const g=guide(c);const host=document.createElement('div');host.className='host';c.appendChild(host);
- function run(){host.innerHTML='';const P=phone(host);P.msg('u',L.borschQ);const m=P.msg('a',L.borsch+'<div class="tools"><span class="cp">⧉</span><span>👍</span><span>🔈</span></div>');
-  g.say(L.s6a);P.hl(m.querySelector('.cp'),()=>{toast(L.copied);sfx.ok();setTimeout(()=>{host.innerHTML='';const V=phone(host,{top:'💬 '+L.family});V.el.querySelector('.p-top').style.background='#EFECFF';V.msg('a',L.famMsg);
-   g.say(L.s6b);V.hl(V.field,()=>{const pop=document.createElement('button');pop.type='button';pop.className='chip';pop.style.cssText='position:absolute;left:30px;bottom:64px;z-index:5;background:#2B2A27;color:#fff;border-color:#2B2A27;font-size:1.05rem';pop.textContent=L.paste;V.el.appendChild(pop);g.say(L.s6c);
-    V.hl(pop,()=>{pop.remove();V.setField(L.borsch);g.say(L.s2c);V.hl(V.send,()=>{V.msg('u',L.borsch+' <small style="color:#2FAF7A">✓✓</small>');V.setField('');sfx.ok();g.say(L.s6ok,'ok');setTimeout(()=>win(6),1300)})})})},700)})}
- run();againBtn(c,run);
-},'l6');
-
-/* ===== Рівень 7: шахраї ===== */
-intro(7);
-slide(7,c=>{header(c,7,L.l7t);const g=guide(c);const box=document.createElement('div');box.style.cssText='display:flex;flex-direction:column;gap:10px';c.appendChild(box);let k=0,ok=0;
- function show(){const s=L.sms[k];g.say(L.s7q.replace('{n}',k+1));box.innerHTML='<div><p class="from">'+s[0]+'</p><div class="sms">'+s[1]+'</div></div><div class="grid2"><button class="vbtn r" type="button" data-a="1">'+L.scam+'</button><button class="vbtn g" type="button" data-a="0">'+L.safe+'</button></div>';
-  box.querySelectorAll('.vbtn').forEach(b=>b.onclick=()=>{const r=+b.dataset.a===s[2];if(r){ok++;sfx.ok()}else sfx.no();g.say((r?L.yes:L.no)+' '+s[3],r?'ok':'no');
-   box.querySelector('.grid2').outerHTML='<button class="btn gr" type="button" id="snext">'+(k<2?L.nextMsg:L.finish)+'</button>';box.querySelector('#snext').onclick=()=>{if(k<2){k++;show()}else win(7)}})}
- show();
-},'l7');
-
-/* ===== Рівень 8: перевіряйте ===== */
-intro(8);
-slide(8,c=>{header(c,8,L.l8t);const g=guide(c);const host=document.createElement('div');host.className='host';c.appendChild(host);
- function run(){host.innerHTML='';const P=phone(host);P.msg('u',L.subQ);g.say(L.s8a);
-  P.ai(L.subA,()=>{g.say(L.s8b);P.chips([L.blind,L.askLink],i=>{if(i===0){sfx.no();g.say(L.s8no,'no');setTimeout(run,2200);return}
-   P.setField(L.askLink2);g.say(L.s2c);P.hl(P.send,()=>{P.msg('u',L.askLink2);P.setField('');P.ai(L.linkA,()=>{sfx.ok();g.say(L.s8ok,'ok');setTimeout(()=>win(8),1500)},'<div style="margin-top:6px;padding:8px 10px;border-radius:12px;background:#EAF2FD;color:#2B6FD6;font-weight:800">🔗 pfu.gov.ua</div>')})})})}
+     P.setField(L.pq);g.say(L.s4d);
+     P.hl(P.send,()=>{P.msg('u','<div class="thumb" style="width:90px;height:90px">'+BOILER+'</div>'+L.pq);P.setField('');P.ai(L.pa,()=>{sfx.ok();g.say(L.s4ok,'ok');setTimeout(()=>go(idx()+1),2200)})})})})})}
  run();againBtn(c,run);
 },'l8');
+slide(8,c=>{const g=guide(c);g.say(L.s4e);
+ c.insertAdjacentHTML('beforeend','<div class="doc"><b style="text-align:center;font-size:1.15rem">'+L.docT+'</b>'+L.doc.map(d=>'<button class="dl" type="button" data-s="'+d[1]+'">'+d[0]+'</button>').join('')+'</div>');
+ let n=0;c.querySelectorAll('.dl').forEach(d=>d.onclick=()=>{if(d.dataset.s==='1'){if(!d.classList.contains('cov')){d.classList.add('cov');n++;sfx.tap();if(n===3){sfx.ok();g.say(L.s4ok2,'ok');setTimeout(()=>win(8),1300)}else g.say(L.s4more.replace('{n}',3-n))}}else{sfx.no();g.say(L.s4no,'no')}});
+},'l8b');
 
-/* ===== Рівень 9: ваші ідеї ===== */
-let favs=LS.get('favs',[]);
+/* ===== 9 шахраї (вечір) ===== */
 intro(9);
-slide(9,c=>{header(c,9,L.l9t);const g=guide(c);g.say(L.s9a);
- c.insertAdjacentHTML('beforeend','<div class="grid2" id="spheres">'+L.spheres.map((s,i)=>'<button class="tile" type="button" data-i="'+i+'"><span class="e">'+s[0]+'</span>'+s[1]+'</button>').join('')+'</div><div class="ideas" id="ideas"></div>');
- const ideas=c.querySelector('#ideas');
- function showSphere(i){c.querySelector('#spheres').classList.add('picked');c.querySelectorAll('#spheres .tile').forEach(t=>t.classList.toggle('on',+t.dataset.i===i));const s=L.spheres[i];g.say(L.s9b);
-  ideas.innerHTML=s[2].map(q=>'<div class="idea"><p>«'+q+'»</p><div class="irow"><button class="btn sm try" type="button">'+L.tryIt+'</button><button class="btn wh sm star'+(favs.includes(q)?' on':'')+'" type="button">★ '+L.save+'</button></div></div>').join('');
-  ideas.querySelectorAll('.idea').forEach((el,j)=>{const q=s[2][j];el.querySelector('.try').onclick=()=>openGPT(q);
-   el.querySelector('.star').onclick=e=>{if(!favs.includes(q)){favs.push(q);LS.set('favs',favs);e.currentTarget.classList.add('on');sfx.ok();toast(L.saved);renderFavs&&renderFavs();if(!done.includes(9))setTimeout(()=>win(9),900)}}});
-  setTimeout(()=>ideas.firstChild&&ideas.firstChild.scrollIntoView({behavior:'smooth',block:'nearest'}),100)}
- c.querySelectorAll('#spheres .tile').forEach(t=>t.onclick=()=>{sfx.tap();showSphere(+t.dataset.i)});
+slide(9,c=>{const g=guide(c);const box=document.createElement('div');box.style.cssText='display:flex;flex-direction:column;gap:10px';c.appendChild(box);let k=0;
+ function show(){const s=L.sms[k];g.say(L.s7q.replace('{n}',k+1));box.innerHTML='<div><p class="from">'+s[0]+'</p><div class="sms">'+s[1]+'</div></div><div class="grid2"><button class="vbtn r" type="button" data-a="1">'+L.scam+'</button><button class="vbtn g" type="button" data-a="0">'+L.safe+'</button></div>';
+  box.querySelectorAll('.vbtn').forEach(b=>b.onclick=()=>{const r=+b.dataset.a===s[2];r?sfx.ok():sfx.no();g.say((r?L.yes:L.no)+' '+s[3],r?'ok':'no');
+   box.querySelector('.grid2').outerHTML='<button class="btn gr" type="button" id="snext">'+(k<2?L.nextMsg:L.next)+'</button>';box.querySelector('#snext').onclick=()=>{if(k<2){k++;show()}else win(9)}})}
+ show();
 },'l9');
 
-/* ===== Рівень 10: шпаргалка + мої картки ===== */
-let renderFavs;
-slide(10,c=>{guide(c).say(L.l10t);
- c.insertAdjacentHTML('beforeend','<div class="cheat">'+L.cheat.map((x,i)=>'<div style="animation-delay:'+i*.12+'s"><span>'+x[0]+'</span>'+x[1]+'</div>').join('')+'</div>'+L.rules.map(r=>'<div class="rule"><span>'+r[0]+'</span>'+r[1]+'</div>').join('')+'<button class="btn" id="tofin" type="button">'+L.l10next+'</button>');
- c.querySelector('#tofin').onclick=()=>go(idx()+1);
+/* ===== 10 що перевіряти (субсидія) ===== */
+intro(10);
+slide(10,c=>{const g=guide(c);const h=host(c);
+ function run(){h.innerHTML='';const P=phone(h);P.msg('u',L.subQ);g.say(L.s8a);
+  P.ai(L.subA,()=>{g.say(L.s8b);P.chips([L.blind,L.askLink],i=>{if(i===0){sfx.no();g.say(L.s8no,'no');setTimeout(run,2600);return}
+   P.setField(L.askLink2);g.say(L.s2c);P.hl(P.send,()=>{P.msg('u',L.askLink2);P.setField('');P.ai(L.linkA,()=>{sfx.ok();g.say(L.s8ok,'ok');setTimeout(()=>win(10),1800)},'<div style="margin-top:6px;padding:8px 10px;border-radius:12px;background:#EAF2FD;color:#2B6FD6;font-weight:800">🔗 pfu.gov.ua</div>')})})})}
+ run();againBtn(c,run);
 },'l10');
-slide(10,c=>{header(c,10,L.l10t2);const g=guide(c);g.say(L.s10a);
+
+/* ===== підсумок ===== */
+let favs=LS.get('favs',[]),renderFavs;
+slide(11,c=>{guide(c).say(L.sumT);
+ c.insertAdjacentHTML('beforeend','<div class="cheat">'+L.cheat.map((x,i)=>'<div style="animation-delay:'+i*.12+'s"><span>'+x[0]+'</span>'+x[1]+'</div>').join('')+'</div>'+L.rules.map(r=>'<div class="rule"><span>'+r[0]+'</span>'+r[1]+'</div>').join('')+'<button class="btn" type="button" id="tosum">'+L.next+'</button>');
+ c.querySelector('#tosum').onclick=()=>go(idx()+1);
+},'sum');
+slide(11,c=>{const g=guide(c);g.say(L.s9a);
+ c.insertAdjacentHTML('beforeend','<div class="grid2" id="spheres">'+L.spheres.map((s,i)=>'<button class="tile" type="button" data-i="'+i+'"><span class="e">'+s[0]+'</span>'+s[1]+'</button>').join('')+'</div><div class="ideas" id="ideas"></div><button class="btn" type="button" id="toend">'+L.next+'</button>');
+ const ideas=c.querySelector('#ideas');
+ c.querySelectorAll('#spheres .tile').forEach(t=>t.onclick=()=>{sfx.tap();const i=+t.dataset.i,s=L.spheres[i];c.querySelector('#spheres').classList.add('picked');c.querySelectorAll('#spheres .tile').forEach(x=>x.classList.toggle('on',x===t));g.say(L.s9b);
+  ideas.innerHTML=s[2].map(q=>'<div class="idea"><p>«'+q+'»</p><div class="irow"><button class="btn sm try" type="button">'+L.tryIt+'</button><button class="btn wh sm star'+(favs.includes(q)?' on':'')+'" type="button">★ '+L.save+'</button></div></div>').join('');
+  ideas.querySelectorAll('.idea').forEach((el,j)=>{const q=s[2][j];el.querySelector('.try').onclick=()=>openGPT(q);
+   el.querySelector('.star').onclick=e=>{if(!favs.includes(q)){favs.push(q);LS.set('favs',favs);e.currentTarget.classList.add('on');sfx.ok();toast(L.saved);renderFavs&&renderFavs()}}})});
+ c.querySelector('#toend').onclick=()=>go(idx()+1);
+},'ideas');
+slide(11,c=>{const g=guide(c);g.say(L.s10a);
  c.insertAdjacentHTML('beforeend','<div class="ideas" id="favs"></div><a class="btn" id="viber" style="background:#7360F2;box-shadow:0 5px 0 #5443C9">'+L.viber+'</a><button class="btn wh sm" id="other" type="button">'+L.other+'</button><button class="btn gr" id="fin" type="button">'+L.finishGame+'</button>');
  const msg=L.shareMsg+' 👉 '+SITE+(LANG==='ru'?'v2/ru/':'v2/');c.querySelector('#viber').href='viber://forward?text='+encodeURIComponent(msg);
  c.querySelector('#other').onclick=()=>{if(navigator.share)navigator.share({text:msg}).catch(()=>{});else{copy(msg);toast(L.copied)}};
  renderFavs=()=>{const f=c.querySelector('#favs');f.innerHTML=favs.length?'<b style="font-size:1.1rem">'+L.myCards+'</b>'+favs.map(q=>'<button class="fav" type="button">★ '+q+'</button>').join(''):'';f.querySelectorAll('.fav').forEach((b,j)=>b.onclick=()=>openGPT(favs[j]))};
- renderFavs();c.querySelector('#fin').onclick=()=>win(10);
+ renderFavs();c.querySelector('#fin').onclick=()=>final();
 },'fin');
+
 
 /* ---------- побудова, навігація ---------- */
 SL.forEach(x=>x.build(x.c));stars();
 const prev=$('#prev'),next=$('#next'),ln=$('#lvlname');
-function upd(){const i=idx(),x=SL[i];prev.disabled=i===0;next.disabled=i===SL.length-1;ln.textContent=x.lvl?L.lvl.replace('{n}',x.lvl):'';
+function upd(){const i=idx(),x=SL[i];prev.disabled=i===0;next.disabled=i===SL.length-1;ln.textContent=x.lvl>10?L.sumName:x.lvl?L.lvl.replace('{n}',x.lvl):'';
  LS.set('pos',i);if(speaking){speechSynthesis.cancel();speaking=false;$('#say').classList.remove('on')}}
 let raf;track.addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(upd)},{passive:true});
 prev.onclick=()=>{sfx.tap();go(idx()-1)};
